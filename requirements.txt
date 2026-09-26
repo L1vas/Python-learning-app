@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+sqlalchemy
+pillow
+requests
+markdown
+bcrypt
