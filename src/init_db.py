@@ -1,12 +1,6 @@
-from src.database import Base, engine
-from src import models
-
-
-def init_database() -> None:
-    """Create all database tables."""
-    Base.metadata.create_all(bind=engine)
-    print("Database tables created successfully.")
+from . import models
+from .database import init_db
 
 
 if __name__ == "__main__":
-    init_database()
+    init_db()
