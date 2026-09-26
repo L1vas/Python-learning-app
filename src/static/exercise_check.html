@@ -1,0 +1,37 @@
+"<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <title>Exercise Check</title>
+    <link rel='stylesheet' href='/static/styles.css'>
+    <script type='module'>
+        import pyodide from 'https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js';
+        async function loadPyodide() {
+            await pyodide.loadPackage(['micropip']);
+            pyodide.runPython(`
+                import micropip
+                micropip.install('numpy')
+            `);
+        }
+    </script>
+</head>
+<body onload='loadPyodide()'>
+    <div id='dashboard'>
+        <textarea id='editor' rows='10' cols='50'></textarea>
+        <button onclick='checkExercise()'>Check Exercise</button>
+        <pre id='output'></pre>
+    </div>
+    <script>
+        function checkExercise() {
+            const code = document.getElementById('editor').value;
+            pyodide.runPython(code);
+            const output = pyodide.globals.get('print');
+            if (output === '{{ exercise.expected_output }}') {
+                alert('Correct!');
+            } else {
+                alert('Incorrect. Try again.');
+            }
+        }
+    </script>
+</body>
+</html>"

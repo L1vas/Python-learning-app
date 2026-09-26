@@ -1,49 +1,56 @@
-from contextlib import asynccontextmanager
 
-from fastapi import Depends, FastAPI
+
+
+from fastapi import FastAPI, Depends
 from sqlalchemy.orm import Session
 
-from .database import Base, engine, get_db
-from .models import Lesson
 
 
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    # Create all database tables when the application starts.
-    Base.metadata.create_all(bind=engine)
-    yield
+from .database import get_db
+from .models import Lesson, Exercise
+from fastapi.staticfiles import StaticFiles
+
+app = FastAPI()
+app.mount('/static', StaticFiles(directory='src/static'), name='static')
 
 
-app = FastAPI(
-    title="Python Coach",
-    description="A web application for learning Python.",
-    version="1.0.0",
-    lifespan=lifespan,
-)
 
 
-@app.get("/")
-def root():
-    return {
-        "message": "Welcome to Python Coach!",
-        "status": "running",
-    }
 
 
-@app.get("/health")
-def health():
-    return {"status": "healthy"}
 
 
-@app.get("/lessons/")
-def get_lessons(db: Session = Depends(get_db)):
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@app.get('/lessons/', response_model=list[Lesson])
+def read_lessons(db: Session = Depends(get_db)):
     lessons = db.query(Lesson).all()
+    return lessons
 
-    return [
-        {
-            "id": lesson.id,
-            "title": lesson.title,
-            "content": lesson.content,
-        }
-        for lesson in lessons
-    ]
+@app.get('/lessons/{lesson_id}/exercises', response_model=list[Exercise])
+def read_exercises(lesson_id: int, db: Session = Depends(get_db)):
+    lesson = db.query(Lesson).filter(Lesson.id == lesson_id).first()
+    if lesson is None:
+        raise HTTPException(status_code=404, detail='Lesson not found')
+    return lesson.exercises

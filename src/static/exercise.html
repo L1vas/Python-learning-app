@@ -1,0 +1,33 @@
+"<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <title>Exercise</title>
+    <link rel='stylesheet' href='/static/styles.css'>
+    <script type='module'>
+        import pyodide from 'https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js';
+        async function loadPyodide() {
+            await pyodide.loadPackage(['micropip']);
+            pyodide.runPython(`
+                import micropip
+                micropip.install('numpy')
+            `);
+        }
+    </script>
+</head>
+<body onload='loadPyodide()'>
+    <div id='dashboard'>
+        <h1>{{ exercise.instructions }}</h1>
+        <textarea id='editor' rows='10' cols='50'>{{ exercise.starter_code }}</textarea>
+        <button onclick='runCode()'>Run Code</button>
+        <pre id='output'></pre>
+    </div>
+    <script>
+        function runCode() {
+            const code = document.getElementById('editor').value;
+            pyodide.runPython(code);
+            document.getElementById('output').innerText = pyodide.globals.get('print');
+        }
+    </script>
+</body>
+</html>"
