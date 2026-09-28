@@ -1,4 +1,4 @@
-"document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', async () => {
     const lessonList = document.getElementById('lesson-list');
 
     try {
@@ -18,4 +18,4 @@
     } catch (error) {
         console.error('Error fetching lessons:', error);
     }
-});"
+});
