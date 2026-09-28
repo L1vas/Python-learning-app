@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise - Python Coach</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ lesson.title }}</h1>
+        <div class="sidebar">
+            <h3>Course Navigation</h3>
+            <ul id="lesson-list"></ul>
+        </div>
+        <div class="main-content">
+            <h2>{{ exercise.instructions }}</h2>
+            <form method="post" action="/run/">
+                <textarea name="code">{{ exercise.starter_code }}</textarea>
+                <button type="submit">Run Code</button>
+            </form>
+            <div id="output"></div>
+        </div>
+    </div>
+
+    <script src="/static/scripts.js"></script>
+</body>
+</html>

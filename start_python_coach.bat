@@ -1,3 +1,8 @@
 @echo off
-"C:\Users\andre\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\python.exe" -m uvicorn src.main:app --reload
 
+cd /d "%~dp0"
+
+python -m uvicorn src.main:app --reload
+
+pause
+```
