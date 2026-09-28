@@ -1,3665 +1,2606 @@
-from typing import Dict, List
+# src/data/level3_data.py
 
-# Level 3 — Loops
-#
-# This file keeps the same lesson structure used by the existing example:
-# each lesson is a dictionary with a title and a content string.
-# The content is intentionally self-contained so the learner can study it
-# without needing the AI tutor.
-
-LEVEL3_LESSONS: List[Dict[str, str]] = [
+LEVEL3_LESSONS = [
     {
-        "title": "Repeating Work",
-        "content": """
-# Level 3 — Loops
-## Lesson 1: Repeating Work
-
-**Learning objectives**
-- Understand what repetition means in programming.
-- Explain why duplicated code can become difficult to maintain.
-- Describe what a loop does before learning loop syntax.
-- Recognise everyday tasks that benefit from repetition.
-
-## Explanation
-
-A program often needs to do the same kind of work more than once. In ordinary life, you might write three thank-you cards, check three temperatures, or ask three people the same question.
-
-In a program, we can repeat an instruction by writing it several times:
-
-```python
-print("Hello")
-print("Hello")
-print("Hello")
-```
-
-This works, but imagine needing to print the message one hundred times. Writing the same line one hundred times would be slow and easy to get wrong. A loop gives the program a way to say, in effect, **"repeat this block of work."**
-
-A **loop** is a programming structure that repeats a block of code. An **iteration** is one pass through the repeated block.
-
-Loops are useful when a task is repeated a known number of times, when a program needs to process several values, or when a program should continue until some condition is met.
-
-You already know `if` statements from Level 2. An `if` lets a program make a decision. A loop lets a program repeat work. Later in this level, you will combine the two.
-
-## Tiny example
-
-Without a loop:
-
-```python
-print("Welcome")
-print("Welcome")
-print("Welcome")
-```
-
-With a loop, the same idea can be expressed more compactly. The exact loop syntax is introduced in the next lesson. For now, focus on the purpose: **one instruction can be repeated instead of copied many times**.
-
-## Worked thinking example
-
-Imagine a program that must display five reminders.
-
-One approach is to write five `print()` statements.
-
-A better approach is to use a loop and let the program perform the repetition for us.
-
-The important design question is not "How do I type five lines?" It is "What part of this task is repeated?"
-
-That question will become useful throughout Python programming.
-
-## Try it yourself
-
-Look at these tasks and decide whether repetition is useful:
-
-1. Print a single welcome message.
-2. Print the same welcome message for 20 new users.
-3. Ask one person for their age.
-4. Ask 10 people for their age.
-5. Check one order.
-6. Check every order in a list of orders.
-
-**Think:** What is repeated? How many times? Is the number known in advance?
-
-## Guided exercise
-
-Write down three real-world tasks from school, work, shopping, or home where the same action happens repeatedly. For each task, write:
-
-- What is repeated?
-- Why would copying the code many times be inconvenient?
-- What information would change from one repetition to the next?
-
-## Independent exercise
-
-For each situation, choose **repeat** or **do once**:
-
-- Show a menu every time a user returns to it.
-- Display the name of one customer.
-- Check every score in a group.
-- Print a single error message.
-- Ask for another password attempt after an invalid password.
-
-Explain one of your choices in a sentence.
-
-## Predict before running
-
-Predict what the output should contain before thinking about how a loop would be written:
-
-```python
-print("A")
-print("B")
-print("C")
-```
-
-Now imagine a loop whose repeated block prints one letter from `A` to `C`. What would the output be, and how many iterations would there be?
-
-## Common mistakes
-
-- Thinking loops are only for counting numbers. Loops can repeat many kinds of work.
-- Focusing on syntax before identifying what needs to repeat.
-- Assuming every repeated task should use the same type of loop. Python has more than one looping style.
-
-## Short quiz
-
-**1. What is a loop?**
-A. A kind of variable
-B. A structure that repeats code
-C. A replacement for `print()`
-D. A type of string
-
-**Answer:** B.
-
-**Why:** A loop controls repeated execution of a block of code.
-
-**2. What is an iteration?**
-A. One complete pass through a loop body
-B. A syntax error
-C. A variable assignment
-D. A Python file
-
-**Answer:** A.
-
-**3. Why are loops useful?**
-
-**Answer:** They let a program repeat work without requiring the programmer to copy the same code over and over.
-
-## Summary
-
-Loops solve a simple but important problem: **repetition**. Instead of manually writing the same work again and again, a loop lets Python repeat a block of code. The next lesson introduces your first real loop.
-
-## Review practice
-
-Describe a task that needs exactly five repetitions and another task that should continue until a condition changes.
-
-## Optional challenge
-
-Imagine you are building a small quiz program. List the parts that might need repetition before you learn how to write the loop.
-""",
+        "title": 'Lesson 1 — Repeating Work',
+        "content": (
+            '    # Module: Why Loops Exist\n'
+            '    # Learning Objectives\n'
+            '    - Understand repetition in programming.\n'
+            '- Recognize when repeated work is useful.\n'
+            '- Understand the general idea of a loop before learning loop syntax.\n'
+            '\n'
+            '    # Why This Matters\n'
+            '    Programs often need to perform the same kind of action many times. A reminder program may display several messages, a game may check many turns, and a validation program may ask for an answer again. Writing every repeated instruction by hand quickly becomes difficult to maintain.\n'
+            '\n'
+            '    # Explanation\n'
+            '    Repetition means performing an action more than once. A loop is a programming structure that lets Python repeat a block of instructions according to a rule. The rule might be a known number of repetitions, a sequence of values, or a condition. The important idea is not the syntax yet; it is the reason loops exist: they turn repeated work into a small, understandable set of instructions.\n'
+            '\n'
+            '    # Examples\n'
+            '    Without a loop:\n'
+            '```python\n'
+            'print("Hello")\n'
+            'print("Hello")\n'
+            'print("Hello")\n'
+            '```\n'
+            '\n'
+            'With a loop, the repeated instruction can be written once. Python can then perform it several times. This is especially useful when the number of repetitions changes later.\n'
+            '\n'
+            '    # Worked Example\n'
+            '    Imagine a program that needs to print a status message 100 times. Copying the same `print()` line 100 times would make the program long and harder to change. A loop gives the program one description of the repeated task instead.\n'
+            '\n'
+            '    # Beginner-Friendly Explanation\n'
+            '    Before learning loop syntax, identify the repeated part of a task. In `print("Hello")` repeated three times, the message is the same and only the repetition count changes. That repeated action is the part a loop is designed to control.\n'
+            '\n'
+            '    # Try It Yourself\n'
+            '    Decide which of three everyday tasks require repetition and explain why.\n'
+            '\n'
+            '    # Guided Exercise\n'
+            '    Mark these tasks as repeated or one-time: print a welcome message once; print a receipt with ten items; ask for a password until it is correct.\n'
+            '\n'
+            '    # Independent Exercise\n'
+            '    Describe one useful computer task that would become awkward if every repetition had to be written separately.\n'
+            '\n'
+            '    # Hints\n'
+            '    Start by identifying what stays the same and what changes. The repeated instruction is the key part.\n'
+            '\n'
+            '    # Common Mistakes\n'
+            '    - Thinking a loop is a variable.\n'
+            '- Trying to memorize syntax before understanding the purpose.\n'
+            '- Assuming every task needs a loop; some tasks really happen only once.\n'
+            '\n'
+            '    # Short Quiz\n'
+            '    1. What does repetition mean in programming?\n'
+            '2. What is the main purpose of a loop?\n'
+            '3. Name one situation where repetition is useful.\n'
+            '\n'
+            '    # Answer and Explanation\n'
+            '    1. Repetition means performing an action more than once.\n'
+            '2. A loop lets Python repeat a block of instructions according to a rule.\n'
+            '3. Examples include counting, repeated input, and processing several values.\n'
+            '\n'
+            '    # Summary\n'
+            '    Loops make repeated work shorter, clearer, and easier to change.\n'
+            '\n'
+            '    # Practice/Review\n'
+            '    For three tasks you already know from Levels 1–2, identify which part could eventually be repeated by a loop.\n'
+            '\n'
+            '    # Optional Challenge\n'
+            '    Imagine a program that must repeat a task 10,000 times. Explain why a loop is a better fit than copying the same statement 10,000 times.\n'
+        ),
+        "exercises": [
+            {
+                "instructions": 'Print the word Hello three times using three print statements. This gives you a baseline to compare with a loop later.',
+                "starter_code": 'print("Hello")\nprint("Hello")\nprint("Hello")\n',
+                "expected_output": 'Hello\nHello\nHello',
+            },
+            {
+                "instructions": 'Print the numbers 1, 2, and 3 on separate lines.',
+                "starter_code": '# Write three print statements.\n',
+                "expected_output": '1\n2\n3',
+            },
+        ],
     },
     {
-        "title": "Your First while Loop",
-        "content": """
-## Lesson 2: Your First while Loop
-
-**Learning objectives**
-- Write the basic structure of a `while` loop.
-- Understand a loop condition.
-- Explain the loop body and indentation.
-- Trace a short `while` loop step by step.
-
-## Explanation
-
-A `while` loop repeats a block of code **while a condition is `True`**.
-
-Here is a small example:
-
-```python
-count = 1
-
-while count <= 3:
-    print(count)
-    count = count + 1
-```
-
-Python works through this program in order.
-
-1. `count = 1` creates a variable named `count` and gives it the starting value `1`.
-2. `while count <= 3:` asks whether the condition is true.
-3. Because `1 <= 3` is true, Python runs the indented lines.
-4. `print(count)` displays `1`.
-5. `count = count + 1` changes `count` to `2`.
-6. Python checks `count <= 3` again.
-7. The same process happens for `2` and `3`.
-8. When `count` becomes `4`, `4 <= 3` is false, so the loop stops.
-
-The indented lines are called the **loop body**. They are the instructions repeated by the loop.
-
-## Terminology
-
-- **Condition:** A comparison or other expression that becomes `True` or `False`.
-- **Loop body:** The indented code that the loop repeats.
-- **Iteration:** One complete execution of the loop body.
-
-## Tiny example
-
-```python
-number = 1
-
-while number < 3:
-    print("Go")
-    number = number + 1
-```
-
-Output:
-
-```text
-Go
-Go
-```
-
-The loop runs twice because the body executes when `number` is `1` and `2`. When it becomes `3`, the condition `number < 3` is false.
-
-## Worked example: count to five
-
-```python
-count = 1
-
-while count <= 5:
-    print(count)
-    count = count + 1
-```
-
-Line by line:
-
-- `count = 1` — choose the starting value.
-- `while count <= 5:` — keep repeating while the condition is true.
-- `print(count)` — show the current value.
-- `count = count + 1` — move the counter forward so the loop can eventually stop.
-
-Output:
-
-```text
-1
-2
-3
-4
-5
-```
-
-## Try it yourself
-
-Change the example so that it prints the numbers from `1` to `4`.
-
-## Guided exercise
-
-Start with:
-
-```python
-count = 5
-```
-
-Build a `while` loop that prints `5`, `4`, `3`, `2`, `1`.
-
-Hint: the value needs to move **down** instead of up.
-
-## Independent exercise
-
-Write a `while` loop that prints the word `Python` three times.
-
-Your loop should use a counter variable.
-
-## Predict before running
-
-What does this print?
-
-```python
-count = 2
-while count <= 4:
-    print(count)
-    count = count + 1
-```
-
-Write the output before running it in the browser.
-
-## Common mistakes
-
-- Forgetting the colon after the condition.
-- Forgetting indentation inside the loop body.
-- Changing the counter in the wrong direction.
-- Using `<` when you meant `<=`, or vice versa.
-
-## Short quiz
-
-**1. When does the loop body run?**
-A. Only when the condition is true
-B. Only when the condition is false
-C. Exactly once
-D. Only at the end of the program
-
-**Answer:** A.
-
-**2. What does `count = count + 1` do?**
-
-**Answer:** It increases `count` by one. This changes the loop's state so the condition can eventually become false.
-
-**3. What stops the loop in the example?**
-
-**Answer:** The condition becomes false when `count` reaches `4`.
-
-## Summary
-
-A `while` loop repeats its indented body while its condition is true. A safe beginner pattern is to choose a starting value, test a condition, do the work, and update the value that controls the loop.
-
-## Review practice
-
-Write a three-line explanation of these four pieces: starting value, condition, loop body, update.
-
-## Optional challenge
-
-Change the example to print only odd numbers from `1` to `9`. Think carefully about how much the counter should change each time.
-""",
+        "title": 'Lesson 2 — Your First while Loop',
+        "content": (
+            '    # Module: While Loops\n'
+            '    # Learning Objectives\n'
+            '    - Understand the purpose of a while loop.\n'
+            '- Identify the condition, body, and changing value.\n'
+            '- Explain why a simple while loop stops.\n'
+            '\n'
+            '    # Why This Matters\n'
+            '    A `while` loop is useful when Python should keep repeating while a condition remains true. This connects directly to the `True` and `False` values and comparisons you learned in Level 2.\n'
+            '\n'
+            '    # Explanation\n'
+            '    A `while` loop checks a condition before each repetition. If the condition is `True`, Python runs the indented loop body. After the body finishes, Python checks the condition again. A simple counting loop needs a value that changes so the condition can eventually become false.\n'
+            '\n'
+            '    # Examples\n'
+            '    ```python\n'
+            'count = 1\n'
+            'while count <= 3:\n'
+            '    print(count)\n'
+            '    count = count + 1\n'
+            '```\n'
+            '\n'
+            'The condition is `count <= 3`. The loop body is the two indented lines.\n'
+            '\n'
+            '    # Worked Example\n'
+            '    `count = 1` creates the starting value. `while count <= 3:` asks whether the current value is at most 3. `print(count)` shows the current value. `count = count + 1` changes the value so the loop can move toward its stopping point.\n'
+            '\n'
+            '    # Beginner-Friendly Explanation\n'
+            '    Execution goes like this:\n'
+            '1. `count` is 1, so the condition is true.\n'
+            '2. Print 1.\n'
+            '3. Change `count` to 2.\n'
+            '4. Repeat for 2 and 3.\n'
+            '5. When `count` becomes 4, `4 <= 3` is false, so the loop stops.\n'
+            '\n'
+            '    # Try It Yourself\n'
+            '    Write a while loop that prints 1, 2, and 3.\n'
+            '\n'
+            '    # Guided Exercise\n'
+            '    Start with `count = 1`, use `while count <= 3`, print the count, then increase it.\n'
+            '\n'
+            '    # Independent Exercise\n'
+            '    Change the loop so it prints 1 through 5.\n'
+            '\n'
+            '    # Hints\n'
+            '    Check the starting value, the condition, and the line that changes the value.\n'
+            '\n'
+            '    # Common Mistakes\n'
+            '    - Forgetting the colon after the condition.\n'
+            '- Putting the loop body at the wrong indentation level.\n'
+            '- Forgetting to change the value used by the condition.\n'
+            '\n'
+            '    # Short Quiz\n'
+            '    1. What does the while condition control?\n'
+            '2. Which lines repeat?\n'
+            '3. What happens when the condition becomes false?\n'
+            '\n'
+            '    # Answer and Explanation\n'
+            '    1. It controls whether another iteration should run.\n'
+            '2. The indented loop body repeats.\n'
+            '3. Python leaves the loop and continues with the next line after it.\n'
+            '\n'
+            '    # Summary\n'
+            '    A while loop repeats an indented block while its condition is true.\n'
+            '\n'
+            '    # Practice/Review\n'
+            '    Trace `count` for a loop from 1 through 4 before running it.\n'
+            '\n'
+            '    # Optional Challenge\n'
+            '    Write a countdown from 5 to 1 using a while loop.\n'
+        ),
+        "exercises": [
+            {
+                "instructions": 'Complete the loop so it prints 1, 2, and 3.',
+                "starter_code": 'count = 1\nwhile count <= 3:\n    print(count)\n    # Add the update here\n',
+                "expected_output": '1\n2\n3',
+            },
+            {
+                "instructions": 'Change the loop so it prints 1 through 5.',
+                "starter_code": 'count = 1\nwhile count <= 5:\n    # Print the current count\n    count += 1\n',
+                "expected_output": '1\n2\n3\n4\n5',
+            },
+        ],
     },
     {
-        "title": "Understanding the Loop Cycle",
-        "content": """
-## Lesson 3: Understanding the Loop Cycle
-
-**Learning objectives**
-- Trace a `while` loop one iteration at a time.
-- Understand when the condition is checked.
-- Predict output without running code.
-- Explain why the update changes later iterations.
-
-## Explanation
-
-A useful way to understand a loop is to think of it as a cycle:
-
-1. Check the condition.
-2. If it is true, run the loop body.
-3. Change the program state.
-4. Check the condition again.
-5. Repeat until the condition is false.
-
-Consider:
-
-```python
-count = 1
-while count <= 3:
-    print(count)
-    count = count + 1
-```
-
-### Trace table
-
-| `count` before check | Condition | Action | `count` after action |
-|---|---|---|---|
-| 1 | `1 <= 3` → True | print 1 | 2 |
-| 2 | `2 <= 3` → True | print 2 | 3 |
-| 3 | `3 <= 3` → True | print 3 | 4 |
-| 4 | `4 <= 3` → False | stop | 4 |
-
-This table shows something important: **the update happens inside the loop, but the condition is checked before the next iteration.**
-
-## Tiny example
-
-```python
-number = 2
-while number < 5:
-    print(number)
-    number = number + 1
-```
-
-The printed values are `2`, `3`, and `4`. The value `5` is not printed because the check fails before another iteration begins.
-
-## Worked example
-
-Consider:
-
-```python
-score = 10
-while score < 14:
-    print(score)
-    score = score + 2
-```
-
-Trace it:
-
-- Start at `10` → condition true → print `10` → change to `12`.
-- `12 < 14` → true → print `12` → change to `14`.
-- `14 < 14` → false → stop.
-
-Output:
-
-```text
-10
-12
-```
-
-## Try it yourself
-
-Trace this without running it:
-
-```python
-number = 3
-while number <= 8:
-    print(number)
-    number = number + 2
-```
-
-Record the value printed on each iteration.
-
-## Guided exercise
-
-Complete this table for:
-
-```python
-x = 1
-while x < 6:
-    print(x)
-    x = x + 2
-```
-
-| Before check | True/False | Printed | After update |
-|---|---|---|---|
-| 1 | ? | ? | ? |
-| ? | ? | ? | ? |
-| ? | ? | ? | ? |
-
-## Independent exercise
-
-Predict the exact output:
-
-```python
-n = 8
-while n >= 2:
-    print(n)
-    n = n - 3
-```
-
-## Debugging exercise
-
-A learner says, "`while n < 5` means the program must print 5." Explain why that is incorrect.
-
-## Common mistakes
-
-- Looking only at the starting value and forgetting the update.
-- Forgetting that the condition is checked before every iteration.
-- Assuming the final value that makes the condition false is printed automatically.
-
-## Short quiz
-
-**1. Which step happens before every iteration?**
-A. The program closes
-B. The condition is checked
-C. The variable is deleted
-D. The output is cleared
-
-**Answer:** B.
-
-**2. In the example with `score`, why is 14 not printed?**
-
-**Answer:** Because the condition is `score < 14`. Once `score` is 14, the condition is false, so the body does not run.
-
-**3. What should you do when predicting a loop?**
-
-**Answer:** Track the controlling values from one iteration to the next and check the condition each time.
-
-## Summary
-
-The loop cycle is condition → body → update → condition again. Tracing a loop by hand is one of the best ways to understand what Python is doing and to find mistakes before running the code.
-
-## Review practice
-
-Make a trace table for a loop that starts at `2`, adds `3` each time, and continues while the value is below `11`.
-
-## Optional challenge
-
-Write a loop where the printed values increase by `5` each iteration and stop before reaching `30`.
-""",
+        "title": 'Lesson 3 — Understanding the Loop Cycle',
+        "content": (
+            '    # Module: While Loops\n'
+            '    # Learning Objectives\n'
+            '    - Describe one iteration of a while loop.\n'
+            '- Trace a loop one step at a time.\n'
+            '- Predict output before running code.\n'
+            '\n'
+            '    # Why This Matters\n'
+            '    A loop becomes easier to understand when you stop treating it as a single action and instead follow what Python does on each pass.\n'
+            '\n'
+            '    # Explanation\n'
+            '    A simple while-loop cycle has four stages: check the condition, run the body if true, update the relevant values, and check the condition again. One complete pass through the body is called an **iteration**. Thinking in iterations helps you predict output and find bugs.\n'
+            '\n'
+            '    # Examples\n'
+            '    For:\n'
+            '```python\n'
+            'number = 2\n'
+            'while number <= 6:\n'
+            '    print(number)\n'
+            '    number += 2\n'
+            '```\n'
+            '\n'
+            'The iterations start with 2, then 4, then 6.\n'
+            '\n'
+            '    # Worked Example\n'
+            '    A trace can be written as:\n'
+            '\n'
+            '| number | condition | action |\n'
+            '|---|---|---|\n'
+            '| 2 | True | print 2 |\n'
+            '| 4 | True | print 4 |\n'
+            '| 6 | True | print 6 |\n'
+            '| 8 | False | stop |\n'
+            '\n'
+            'The table makes the state change visible.\n'
+            '\n'
+            '    # Beginner-Friendly Explanation\n'
+            '    For a loop that adds 2, the update happens after the print. That means the printed value is still the old value for that iteration. The next check sees the updated value.\n'
+            '\n'
+            '    # Try It Yourself\n'
+            '    Create a trace table for a countdown from 3 to 1.\n'
+            '\n'
+            '    # Guided Exercise\n'
+            '    Fill in the values of `number` for each iteration of a loop that starts at 0 and adds 2 until 6.\n'
+            '\n'
+            '    # Independent Exercise\n'
+            '    Predict the exact output of a short while loop before using Run.\n'
+            '\n'
+            '    # Hints\n'
+            '    Write the value at the start of an iteration, not the value after the update.\n'
+            '\n'
+            '    # Common Mistakes\n'
+            '    - Skipping the condition check when tracing.\n'
+            '- Updating the variable too early in your mental trace.\n'
+            '- Assuming the stop value runs without checking the condition.\n'
+            '\n'
+            '    # Short Quiz\n'
+            '    1. What is an iteration?\n'
+            '2. What happens before the loop body?\n'
+            '3. Why is tracing useful?\n'
+            '\n'
+            '    # Answer and Explanation\n'
+            '    1. One iteration is one complete execution of the loop body.\n'
+            '2. Python checks the loop condition.\n'
+            '3. Tracing shows how values and decisions change, which helps with prediction and debugging.\n'
+            '\n'
+            '    # Summary\n'
+            '    Tracing means following the loop one iteration at a time instead of guessing the final result.\n'
+            '\n'
+            '    # Practice/Review\n'
+            '    Predict the outputs of two small loops and explain your prediction before running them.\n'
+            '\n'
+            '    # Optional Challenge\n'
+            '    Trace a loop that starts at 10 and decreases by 2 until it reaches 4.\n'
+        ),
+        "exercises": [
+            {
+                "instructions": 'Predict and run the loop.',
+                "starter_code": 'number = 2\nwhile number <= 6:\n    print(number)\n    number += 2\n',
+                "expected_output": '2\n4\n6',
+            },
+            {
+                "instructions": 'Predict and run the countdown.',
+                "starter_code": 'number = 3\nwhile number > 0:\n    print(number)\n    number -= 1\n',
+                "expected_output": '3\n2\n1',
+            },
+        ],
     },
     {
-        "title": "Avoiding Infinite Loops",
-        "content": """
-## Lesson 4: Avoiding Infinite Loops
-
-**Learning objectives**
-- Explain what an infinite loop is.
-- Recognise common causes of infinite loops.
-- Repair a loop whose controlling value never changes.
-- Check a loop for a clear stopping point before running it.
-
-## Explanation
-
-An **infinite loop** is a loop that keeps running because its condition never becomes false.
-
-This loop is broken:
-
-```python
-count = 1
-
-while count <= 3:
-    print(count)
-```
-
-There is no update to `count`. It remains `1` forever. Since `1 <= 3` remains true, Python keeps printing `1`.
-
-The fix is to change the value inside the loop:
-
-```python
-count = 1
-
-while count <= 3:
-    print(count)
-    count = count + 1
-```
-
-Now `count` becomes `2`, then `3`, then `4`. At `4`, the condition is false and the loop stops.
-
-## Safe loop habit
-
-Before running a `while` loop, ask three questions:
-
-1. What value controls the loop?
-2. Where does that value change?
-3. Why will the condition eventually become false?
-
-If you cannot answer the third question, inspect the loop carefully.
-
-## Worked debugging example
-
-Broken code:
-
-```python
-number = 10
-while number > 0:
-    print(number)
-    number = number + 1
-```
-
-The program counts upward: 10, 11, 12, 13, ... The condition `number > 0` never becomes false.
-
-A correction is:
-
-```python
-number = 10
-while number > 0:
-    print(number)
-    number = number - 1
-```
-
-Now the value moves toward the stopping condition.
-
-## Try it yourself
-
-Find the problem here:
-
-```python
-x = 0
-while x < 5:
-    print(x)
-    x = x - 1
-```
-
-The variable changes, but in the wrong direction.
-
-## Guided debugging exercise
-
-Repair both loops:
-
-**A**
-```python
-count = 0
-while count < 4:
-    print(count)
-```
-
-**B**
-```python
-count = 4
-while count > 0:
-    print(count)
-    count = count + 1
-```
-
-## Independent exercise
-
-Write a loop that counts from `1` to `5` and explain why it must stop.
-
-## Predict before running
-
-What happens here?
-
-```python
-n = 2
-while n < 10:
-    print(n)
-    n = n * 2
-```
-
-Does it stop? If so, when?
-
-## Common mistakes
-
-- Forgetting to update the controlling variable.
-- Updating it, but moving it away from the stopping point.
-- Assuming a loop will stop just because it "looks like" it should.
-
-## Short quiz
-
-**1. What is an infinite loop?**
-
-**Answer:** A loop that does not reach a state where its condition is false.
-
-**2. Why does the broken `count <= 3` example repeat forever?**
-
-**Answer:** `count` stays at `1`, so the condition stays true.
-
-**3. Can a loop have an update and still be infinite?**
-
-**Answer:** Yes. The update can move the value in the wrong direction or otherwise keep the condition true.
-
-## Summary
-
-A good `while` loop has a clear path to its stopping point. Always identify the controlling value, the update, and the reason the condition will eventually become false.
-
-## Review practice
-
-Look at three loops you have written and explain the stopping condition for each.
-
-## Optional challenge
-
-Design a loop that starts at `64` and repeatedly divides by `2` until the value is `1`.
-""",
+        "title": 'Lesson 4 — Avoiding Infinite Loops',
+        "content": (
+            '    # Module: While Loops\n'
+            '    # Learning Objectives\n'
+            '    - Understand what an infinite loop is.\n'
+            '- Recognize common causes of infinite loops.\n'
+            '- Inspect a loop for a reachable stopping condition.\n'
+            '\n'
+            '    # Why This Matters\n'
+            '    A loop can be logically wrong even when Python accepts the syntax. A program that never reaches its stopping point may appear frozen, so learning to reason about loop termination is an important beginner skill.\n'
+            '\n'
+            '    # Explanation\n'
+            '    An **infinite loop** is a loop that continues without reaching a stopping point. A common cause is forgetting to change the value used by the condition. Another is changing the value in the wrong direction.\n'
+            '\n'
+            '    # Examples\n'
+            '    This example should be studied as a debugging example rather than run:\n'
+            '```text\n'
+            'count = 1\n'
+            'while count <= 3:\n'
+            '    print(count)\n'
+            '```\n'
+            '\n'
+            '`count` never changes, so the condition remains true.\n'
+            '\n'
+            '    # Worked Example\n'
+            '    A safe version adds an update:\n'
+            '```python\n'
+            'count = 1\n'
+            'while count <= 3:\n'
+            '    print(count)\n'
+            '    count += 1\n'
+            '```\n'
+            '\n'
+            'The update moves `count` from 1 to 4, making the condition false.\n'
+            '\n'
+            '    # Beginner-Friendly Explanation\n'
+            '    Before running a while loop, ask three questions:\n'
+            '1. What starts the controlling value?\n'
+            '2. What changes it?\n'
+            '3. What exact value or condition makes the loop stop?\n'
+            '\n'
+            'If you cannot answer all three, inspect the code before running it.\n'
+            '\n'
+            '    # Try It Yourself\n'
+            '    Find the missing update in a broken loop.\n'
+            '\n'
+            '    # Guided Exercise\n'
+            '    Add `count += 1` to a loop that counts from 1 to 3.\n'
+            '\n'
+            '    # Independent Exercise\n'
+            '    Explain why decrementing a value can be the wrong update when the condition is `count <= 3`.\n'
+            '\n'
+            '    # Hints\n'
+            '    Follow the variable used in the condition and see whether it moves toward the stopping point.\n'
+            '\n'
+            '    # Common Mistakes\n'
+            '    - Forgetting the update.\n'
+            '- Updating the wrong variable.\n'
+            '- Moving away from the stopping condition.\n'
+            '\n'
+            '    # Short Quiz\n'
+            '    1. What is an infinite loop?\n'
+            '2. What is a common cause?\n'
+            '3. What should you check before running a while loop?\n'
+            '\n'
+            '    # Answer and Explanation\n'
+            '    1. A loop that continues without reaching a stopping point.\n'
+            '2. Failing to change the controlling value, or changing it in the wrong direction.\n'
+            '3. Check the starting value, update, and stopping condition.\n'
+            '\n'
+            '    # Summary\n'
+            '    Safe loops have a clear condition and a believable path toward becoming false.\n'
+            '\n'
+            '    # Practice/Review\n'
+            '    Inspect two broken loops without executing unsafe code. For each, name the controlling value and the missing or incorrect update.\n'
+            '\n'
+            '    # Optional Challenge\n'
+            '    Design a loop that deliberately counts down from 10 to 1 and explain why its condition will eventually become false.\n'
+        ),
+        "exercises": [
+            {
+                "instructions": 'Repair the loop by adding the update that makes it stop.',
+                "starter_code": 'count = 1\nwhile count <= 3:\n    print(count)\n    # Add the missing update\n',
+                "expected_output": '1\n2\n3',
+            },
+            {
+                "instructions": 'Repair this countdown so it prints 3, 2, 1.',
+                "starter_code": 'count = 3\nwhile count > 0:\n    print(count)\n    # Add the missing update\n',
+                "expected_output": '3\n2\n1',
+            },
+        ],
     },
     {
-        "title": "Counters",
-        "content": """
-## Lesson 5: Counters
-
-**Learning objectives**
-- Understand a counter variable.
-- Start a counter at an appropriate value.
-- Increase a counter inside a loop.
-- Use a counter to count events rather than merely iterations.
-
-## Explanation
-
-A **counter** is a variable used to keep track of how many times something has happened.
-
-A common pattern is:
-
-```python
-count = 0
-
-while count < 5:
-    print("Hello")
-    count = count + 1
-```
-
-Why start at `0`? Before anything happens, the number of completed events is zero. After the first print, the counter becomes `1`. After five prints, it becomes `5` and the loop stops.
-
-Counters are especially useful when the event being counted is not the same thing as the loop itself. For example, we might count how many test scores are above 80.
-
-## Worked example: count even numbers
-
-```python
-count = 0
-number = 1
-
-while number <= 10:
-    if number % 2 == 0:
-        count = count + 1
-    number = number + 1
-
-print(count)
-```
-
-The loop examines numbers 1 to 10. The `if` condition decides whether a number is even. Only when the condition is true does the counter increase.
-
-The final answer is `5` because there are five even numbers from 1 through 10.
-
-## Try it yourself
-
-Change the example so the counter records how many numbers from `1` to `10` are greater than `7`.
-
-## Guided exercise
-
-A survey asks five people a question. Build a loop that increases a counter whenever the person's answer is `"yes"`.
-
-Start with:
-
-```python
-yes_count = 0
-```
-
-Then decide what the loop should do after each answer.
-
-## Independent exercise
-
-Ask the user for five numbers. Count how many of them are negative.
-
-Use:
-- a loop counter to control five inputs
-- a second counter to count negative numbers
-
-## Predict before running
-
-How many times does `match_count` increase?
-
-```python
-match_count = 0
-for number in range(1, 6):
-    if number >= 3:
-        match_count = match_count + 1
-```
-
-## Common mistakes
-
-- Using one variable for two different jobs.
-- Starting a counter at `1` when it represents "how many have happened so far".
-- Increasing the counter outside the condition when only matching items should count.
-
-## Short quiz
-
-**1. What does a counter store?**
-A. The current text message
-B. A count of events or items
-C. A Python module
-D. A file path
-
-**Answer:** B.
-
-**2. Why is `0` a natural starting value for many counters?**
-
-**Answer:** Because before anything has happened, zero events have been counted.
-
-**3. What is the difference between a loop-control variable and an event counter?**
-
-**Answer:** A loop-control variable helps determine when the loop continues or stops. An event counter records how many items or events meet a specific rule.
-
-## Summary
-
-Counters are simple variables with an important job: keeping track of quantities. You will use them again in averages, validation loops, data processing, and projects.
-
-## Review practice
-
-Write a small plan for counting how many numbers from `1` to `20` are divisible by `3`.
-
-## Optional challenge
-
-Count how many numbers from `1` to `100` end in the digit `5`.
-""",
+        "title": 'Lesson 5 — Counters',
+        "content": (
+            '    # Module: Counters and Accumulation\n'
+            '    # Learning Objectives\n'
+            '    - Understand a counter variable.\n'
+            '- Start and update a counter correctly.\n'
+            '- Use a counter to count repetitions or matches.\n'
+            '\n'
+            '    # Why This Matters\n'
+            "    Programs often need to answer questions such as 'How many values passed?' or 'How many times did this happen?' A counter gives the program a place to remember that number.\n"
+            '\n'
+            '    # Explanation\n'
+            '    A **counter** is a variable whose job is to keep track of how many times something happens. A common pattern is to start at zero and increase by one when the event being counted occurs.\n'
+            '\n'
+            '    # Examples\n'
+            '    ```python\n'
+            'count = 0\n'
+            'for number in range(5):\n'
+            '    count += 1\n'
+            'print(count)\n'
+            '```\n'
+            '\n'
+            'The final answer is 5 because the loop processed five values.\n'
+            '\n'
+            '    # Worked Example\n'
+            '    To count only even values:\n'
+            '```python\n'
+            'count = 0\n'
+            'for number in range(1, 11):\n'
+            '    if number % 2 == 0:\n'
+            '        count += 1\n'
+            'print(count)\n'
+            '```\n'
+            '\n'
+            'The counter increases only when the condition is true.\n'
+            '\n'
+            '    # Beginner-Friendly Explanation\n'
+            '    The important placement is the update. If `count += 1` is inside the `if`, only matching values are counted. If it is outside the `if`, every loop iteration is counted.\n'
+            '\n'
+            '    # Try It Yourself\n'
+            '    Count how many times a loop repeats.\n'
+            '\n'
+            '    # Guided Exercise\n'
+            '    Use a counter starting at 0 and increase it once per iteration of `range(3)`.\n'
+            '\n'
+            '    # Independent Exercise\n'
+            '    Count how many numbers from 1 to 20 are divisible by 3.\n'
+            '\n'
+            '    # Hints\n'
+            '    Create the counter before the loop so the value survives across iterations.\n'
+            '\n'
+            '    # Common Mistakes\n'
+            '    - Resetting the counter inside the loop.\n'
+            '- Incrementing when the event did not happen.\n'
+            '- Using a total when a count is required.\n'
+            '\n'
+            '    # Short Quiz\n'
+            '    1. What is a counter?\n'
+            '2. What value does a simple counter often start with?\n'
+            '3. When should a conditional counter increase?\n'
+            '\n'
+            '    # Answer and Explanation\n'
+            '    1. A variable that tracks how many times something happens.\n'
+            '2. Zero.\n'
+            '3. Only when the condition being counted is true.\n'
+            '\n'
+            '    # Summary\n'
+            '    Counters measure quantity. Initialize them before the loop and update them at the moment the counted event occurs.\n'
+            '\n'
+            '    # Practice/Review\n'
+            '    Count even numbers, numbers greater than 10, and three fixed repetitions. Notice how the counter pattern stays similar while the condition changes.\n'
+            '\n'
+            '    # Optional Challenge\n'
+            '    Count how many numbers from 1 to 50 are divisible by both 3 and 5.\n'
+        ),
+        "exercises": [
+            {
+                "instructions": 'Count how many times the loop runs.',
+                "starter_code": 'count = 0\nfor number in range(5):\n    count += 1\nprint(count)\n',
+                "expected_output": '5',
+            },
+            {
+                "instructions": 'Count the even values from 1 through 10.',
+                "starter_code": 'count = 0\nfor number in range(1, 11):\n    if number % 2 == 0:\n        count += 1\nprint(count)\n',
+                "expected_output": '5',
+            },
+        ],
     },
     {
-        "title": "Accumulating a Total",
-        "content": """
-## Lesson 6: Accumulating a Total
-
-**Learning objectives**
-- Understand an accumulator variable.
-- Build a running total in a loop.
-- Distinguish an accumulator from a counter.
-- Trace how a total changes after each iteration.
-
-## Explanation
-
-An **accumulator** is a variable that collects a value over time. A common accumulator keeps a running total.
-
-Example:
-
-```python
-total = 0
-number = 1
-
-while number <= 5:
-    total = total + number
-    number = number + 1
-
-print(total)
-```
-
-The accumulator starts at `0` because nothing has been added yet.
-
-The values of `total` are:
-
-| Iteration | `number` | `total` after addition |
-|---|---:|---:|
-| 1 | 1 | 1 |
-| 2 | 2 | 3 |
-| 3 | 3 | 6 |
-| 4 | 4 | 10 |
-| 5 | 5 | 15 |
-
-The final output is `15`.
-
-A **counter** usually answers "how many?" An **accumulator** often answers "what is the combined total?" A program can need both.
-
-## Tiny example
-
-```python
-total = 0
-
-total = total + 4
-print(total)
-```
-
-The total changes from `0` to `4`.
-
-## Worked example: add three prices
-
-```python
-total = 0
-
-price = 2.50
-total = total + price
-
-price = 4.00
-total = total + price
-
-price = 1.50
-total = total + price
-
-print(total)
-```
-
-The result is `8.0`. The same pattern becomes much more useful when a loop handles an unknown number of values.
-
-## Try it yourself
-
-Change the first example to add only the numbers `2`, `4`, and `6`.
-
-## Guided exercise
-
-Create an accumulator that adds the numbers from `1` to `10`.
-
-Check your total by doing a quick calculation on paper.
-
-## Independent exercise
-
-Ask the user for four prices. Add them into a running total and print the final amount.
-
-## Predict before running
-
-What are the values of `total` after each iteration?
-
-```python
-total = 0
-for number in range(2, 6):
-    total = total + number
-```
-
-## Debugging exercise
-
-Find the error:
-
-```python
-total = 0
-for number in range(1, 6):
-    total = number
-print(total)
-```
-
-Why does this produce `5` instead of the total of all the numbers?
-
-## Common mistakes
-
-- Starting the accumulator with the wrong initial value.
-- Replacing the total instead of adding to it.
-- Forgetting that the accumulator keeps its value between iterations.
-
-## Short quiz
-
-**1. What is an accumulator?**
-
-**Answer:** A variable that gradually collects a value, such as a running total.
-
-**2. Why does `total = number` not calculate a running total?**
-
-**Answer:** It replaces the previous total each time instead of adding the new number to it.
-
-**3. What is the difference between `count = count + 1` and `total = total + number`?**
-
-**Answer:** The first usually counts events by one. The second adds the current value to a running total.
-
-## Summary
-
-Accumulators let programs combine values one at a time. Once you understand the pattern `total = total + value`, many practical tasks become possible.
-
-## Review practice
-
-Write one sentence explaining why an accumulator usually needs an initial value before the loop starts.
-
-## Optional challenge
-
-Calculate the sum of all multiples of `3` between `1` and `30`.
-""",
+        "title": 'Lesson 6 — Accumulating a Total',
+        "content": (
+            '    # Module: Counters and Accumulation\n'
+            '    # Learning Objectives\n'
+            '    - Understand an accumulator.\n'
+            '- Build a running total.\n'
+            '- Distinguish an accumulator from a counter.\n'
+            '\n'
+            '    # Why This Matters\n'
+            '    A counter tells you how many items you saw. An accumulator remembers a combined result, such as a total score, total price, or sum of numbers.\n'
+            '\n'
+            '    # Explanation\n'
+            '    An **accumulator** is a variable that builds a result over multiple iterations. For addition, it commonly starts at zero and adds the current value on each iteration.\n'
+            '\n'
+            '    # Examples\n'
+            '    ```python\n'
+            'total = 0\n'
+            'for number in range(1, 6):\n'
+            '    total += number\n'
+            'print(total)\n'
+            '```\n'
+            '\n'
+            'The running total becomes 1, 3, 6, 10, and 15.\n'
+            '\n'
+            '    # Worked Example\n'
+            '    For values 4, 7, and 2:\n'
+            '\n'
+            '```text\n'
+            'total = 0\n'
+            '+ 4 → 4\n'
+            '+ 7 → 11\n'
+            '+ 2 → 13\n'
+            '```\n'
+            '\n'
+            'The accumulator keeps the previous result and adds the next value.\n'
+            '\n'
+            '    # Beginner-Friendly Explanation\n'
+            '    Counter:\n'
+            '```python\n'
+            'count += 1\n'
+            '```\n'
+            '\n'
+            'Accumulator:\n'
+            '```python\n'
+            'total += value\n'
+            '```\n'
+            '\n'
+            'Both patterns persist across iterations, but they answer different questions.\n'
+            '\n'
+            '    # Try It Yourself\n'
+            '    Calculate the total of 2, 4, and 6.\n'
+            '\n'
+            '    # Guided Exercise\n'
+            '    Start `total = 0`, loop through the values, and add each current value.\n'
+            '\n'
+            '    # Independent Exercise\n'
+            '    Calculate the total price of 5, 8, and 12.\n'
+            '\n'
+            '    # Hints\n'
+            '    Ask whether you are adding 1 or adding the current value. That tells you whether you are counting or accumulating.\n'
+            '\n'
+            '    # Common Mistakes\n'
+            '    - Resetting total inside the loop.\n'
+            '- Adding 1 instead of the current value.\n'
+            '- Starting an addition accumulator with a non-zero value without a reason.\n'
+            '\n'
+            '    # Short Quiz\n'
+            '    1. What does an accumulator store?\n'
+            '2. How is it different from a counter?\n'
+            '3. Why does addition commonly start at zero?\n'
+            '\n'
+            '    # Answer and Explanation\n'
+            '    1. It stores a running combined result.\n'
+            '2. A counter counts occurrences, while an accumulator combines values.\n'
+            '3. Zero does not change the first value added.\n'
+            '\n'
+            '    # Summary\n'
+            '    An accumulator carries a result from one iteration to the next, often building a total.\n'
+            '\n'
+            '    # Practice/Review\n'
+            '    Trace the running totals for 3, 5, and 8. Then compare that trace with a counter processing the same three values.\n'
+            '\n'
+            '    # Optional Challenge\n'
+            '    Use both a counter and an accumulator to find the total and number of values in a fixed set.\n'
+        ),
+        "exercises": [
+            {
+                "instructions": 'Calculate the sum of 1 through 5.',
+                "starter_code": 'total = 0\nfor number in range(1, 6):\n    total += number\nprint(total)\n',
+                "expected_output": '15',
+            },
+            {
+                "instructions": 'Calculate the total price.',
+                "starter_code": 'total = 0\nfor price in [5, 8, 12]:\n    total += price\nprint(total)\n',
+                "expected_output": '25',
+            },
+        ],
     },
     {
-        "title": "Loops with input()",
-        "content": """
-## Lesson 7: Loops with input()
-
-**Learning objectives**
-- Combine loops with `input()`.
-- Reuse type conversion learned in Level 1.
-- Keep a count and total while processing repeated input.
-- Explain how earlier Python concepts work together.
-
-## Explanation
-
-Loops become much more practical when the program can repeatedly interact with the user.
-
-Example:
-
-```python
-total = 0
-count = 0
-
-while count < 3:
-    number = int(input("Enter a number: "))
-    total = total + number
-    count = count + 1
-
-print("Total:", total)
-```
-
-This combines several ideas you already learned:
-
-- `input()` gets text from the user.
-- `int()` converts that text into a whole number.
-- `total` accumulates the values.
-- `count` keeps track of how many numbers have been entered.
-- the `while` loop repeats the work three times.
-
-## Worked example
-
-Suppose the user enters `4`, `7`, and `2`.
-
-The total changes like this:
-
-- Start: `0`
-- After `4`: `4`
-- After `7`: `11`
-- After `2`: `13`
-
-The counter changes from `0` to `1`, then `2`, then `3`.
-
-When `count < 3` becomes false, the loop ends and the total is printed.
-
-## Try it yourself
-
-Change the program to ask for five numbers instead of three.
-
-## Guided exercise
-
-Build a program that asks for three test scores and prints the total score.
-
-Steps:
-1. Create `total = 0`.
-2. Create a counter.
-3. Repeat three times.
-4. Convert each input to `int`.
-5. Add it to the total.
-6. Print the total.
-
-## Independent exercise
-
-Ask for the user's daily water intake for five days and calculate the total amount entered.
-
-## Prediction exercise
-
-Before running this program, predict the final total if the user enters `5`, `5`, and `10`:
-
-```python
-total = 0
-count = 0
-while count < 3:
-    number = int(input("Number: "))
-    total = total + number
-    count = count + 1
-print(total)
-```
-
-## Common mistakes
-
-- Forgetting `int()` when numerical arithmetic is required.
-- Incrementing the counter before the input and accidentally changing how many times the loop runs.
-- Using a text variable where a number is needed.
-
-## Short quiz
-
-**1. Why is `int(input(...))` useful here?**
-
-**Answer:** `input()` returns text, while `int()` converts the text to a whole number that can be added.
-
-**2. Why do we need both `total` and `count`?**
-
-**Answer:** `total` stores the combined value, while `count` tracks how many inputs have been processed.
-
-**3. What happens after the third input in the example?**
-
-**Answer:** The counter becomes `3`, the condition becomes false, and the loop stops.
-
-## Summary
-
-A loop can repeatedly collect information from a user and process it as it arrives. This combines the skills from Levels 1 and 2 into something much more useful.
-
-## Review practice
-
-Change the example to collect four numbers and print both the total and the number of entries.
-
-## Optional challenge
-
-Ask for five temperatures and count how many are below `10` while also calculating the total.
-""",
+        "title": 'Lesson 7 — Loops with input()',
+        "content": (
+            '    # Module: Counters and Accumulation\n'
+            '    # Learning Objectives\n'
+            '    - Combine input() with a loop.\n'
+            '- Use type conversion inside a loop.\n'
+            '- Build a total from repeated user input.\n'
+            '\n'
+            '    # Why This Matters\n'
+            '    You already know how to read input and convert text to numbers. A loop lets you repeat that process so a program can collect several values instead of just one.\n'
+            '\n'
+            '    # Explanation\n'
+            '    In a fixed-count input loop, one variable controls how many inputs have been collected, while another stores the current number and a third keeps the running total. Keeping these roles separate makes the code easier to reason about.\n'
+            '\n'
+            '    # Examples\n'
+            '    ```python\n'
+            'total = 0\n'
+            'count = 0\n'
+            'while count < 3:\n'
+            '    number = int(input("Enter a number: "))\n'
+            '    total += number\n'
+            '    count += 1\n'
+            'print("Total:", total)\n'
+            '```\n'
+            '\n'
+            '    # Worked Example\n'
+            '    Suppose the user enters 4, 7, and 2. The total becomes 4, then 11, then 13. The count becomes 1, 2, then 3. At that point, `count < 3` is false.\n'
+            '\n'
+            '    # Beginner-Friendly Explanation\n'
+            '    This program combines earlier ideas rather than introducing a new one at each line:\n'
+            '- `input()` gets text.\n'
+            '- `int()` converts that text to an integer.\n'
+            '- `total += number` accumulates.\n'
+            '- `count += 1` counts.\n'
+            '- the while condition controls repetition.\n'
+            '\n'
+            '    # Try It Yourself\n'
+            '    Build a loop that collects two numbers and calculates their total.\n'
+            '\n'
+            '    # Guided Exercise\n'
+            '    Start with `total = 0` and `count = 0`. Repeat while `count < 2`.\n'
+            '\n'
+            '    # Independent Exercise\n'
+            '    Create a fixed three-number score collector and print the average after the loop.\n'
+            '\n'
+            '    # Hints\n'
+            '    Keep `total` and `count` outside the loop so their values are remembered.\n'
+            '\n'
+            '    # Common Mistakes\n'
+            '    - Trying to add input text without converting it.\n'
+            '- Resetting total inside the loop.\n'
+            '- Forgetting to increase the count.\n'
+            '\n'
+            '    # Short Quiz\n'
+            '    1. Why use `int(input(...))`?\n'
+            '2. What controls the number of inputs?\n'
+            '3. Why is `total` initialized before the loop?\n'
+            '\n'
+            '    # Answer and Explanation\n'
+            '    1. `input()` returns text, so `int()` converts it to a number.\n'
+            '2. The count controls the number of inputs.\n'
+            '3. The total must keep its accumulated value across iterations.\n'
+            '\n'
+            '    # Summary\n'
+            '    Loops let earlier Level 1 tools work repeatedly, turning one input operation into a small data-collection program.\n'
+            '\n'
+            '    # Practice/Review\n'
+            '    Trace the total and count for three sample inputs without running the program.\n'
+            '\n'
+            '    # Optional Challenge\n'
+            '    Change the program to collect five values and report both total and average.\n'
+        ),
+        "exercises": [
+            {
+                "instructions": 'Read two integers and print their total. Test with 10 and 20.',
+                "starter_code": 'total = 0\ncount = 0\nwhile count < 2:\n    number = int(input())\n    total += number\n    count += 1\nprint(total)\n',
+                "expected_output": '30',
+            },
+            {
+                "instructions": 'Calculate the total and average of the fixed values without interactive input.',
+                "starter_code": 'numbers = [10, 20, 30]\ntotal = 0\ncount = 0\nfor number in numbers:\n    total += number\n    count += 1\nprint(total)\nprint(total / count)\n',
+                "expected_output": '60\n20.0',
+            },
+        ],
     },
     {
-        "title": "Your First for Loop",
-        "content": """
-## Lesson 8: Your First `for` Loop
-
-**Learning objectives**
-- Understand why Python provides `for` loops.
-- Recognise the loop variable.
-- Repeat work over a sequence of values.
-- Trace each iteration of a simple `for` loop.
-
-## Explanation
-
-A `for` loop is another way to repeat code. It is especially convenient when you want to go through a sequence of values one item at a time.
-
-Start with:
-
-```python
-for number in [1, 2, 3]:
-    print(number)
-```
-
-Python takes the first value, `1`, and puts it in the loop variable `number`. The body runs. Then Python moves to `2`, runs the body again, then `3`.
-
-The list `[1, 2, 3]` is the sequence being visited. You do not need to learn every detail about lists yet; at this stage, notice only that the loop gets one value at a time.
-
-## Terminology
-
-- **Sequence:** An ordered collection of values that can be visited one at a time.
-- **Loop variable:** The variable that refers to the current value during an iteration.
-
-## Worked example
-
-```python
-for animal in ["cat", "dog", "rabbit"]:
-    print(animal)
-```
-
-Output:
-
-```text
-cat
-dog
-rabbit
-```
-
-On the first iteration, `animal` refers to `"cat"`.
-On the second iteration, it refers to `"dog"`.
-On the third iteration, it refers to `"rabbit"`.
-
-## Try it yourself
-
-Change the animals to three foods you like.
-
-## Guided exercise
-
-Write a loop that prints each item from:
-
-```python
-["red", "green", "blue"]
-```
-
-Then change the loop variable name to something that describes the current item better.
-
-## Independent exercise
-
-Use a `for` loop to print three short messages from a sequence of strings.
-
-## Predict before running
-
-What is printed?
-
-```python
-for word in ["learn", "build", "practice"]:
-    print(word)
-```
-
-## Common mistakes
-
-- Thinking the loop variable always has to be called `i`.
-- Forgetting the colon after the sequence.
-- Forgetting indentation inside the loop body.
-- Assuming the loop variable keeps all items instead of representing the current item.
-
-## Short quiz
-
-**1. What does `animal` represent in the example?**
-
-**Answer:** It represents the current item from the sequence during the current iteration.
-
-**2. How many iterations are there in the animal example?**
-
-**Answer:** Three, because there are three items.
-
-**3. Does the loop variable have to be named `item`?**
-
-**Answer:** No. Choose a meaningful name such as `animal`, `number`, or `word`.
-
-## Summary
-
-A `for` loop visits values one at a time. The loop variable gives you the current value for that iteration.
-
-## Review practice
-
-Describe the difference between the job of a `while` condition and the job of a `for` loop variable.
-
-## Optional challenge
-
-Print a short sentence for each of three different foods, using the current food name inside the sentence.
-""",
+        "title": 'Lesson 8 — Why for Loops Exist',
+        "content": (
+            '    # Module: For Loops\n'
+            '    # Learning Objectives\n'
+            '    - Understand the purpose of a for loop.\n'
+            '- Recognize that a for loop processes one item at a time.\n'
+            '- Identify the loop variable and loop body.\n'
+            '\n'
+            '    # Why This Matters\n'
+            '    A for loop is a convenient way to repeat work for each item in a sequence. This is especially useful when the number of items is already known.\n'
+            '\n'
+            '    # Explanation\n'
+            '    A `for` loop assigns one item at a time to a loop variable and runs the indented body for each item. The loop variable is not a list of all items; it represents the current item for the current iteration.\n'
+            '\n'
+            '    # Examples\n'
+            '    ```python\n'
+            'for animal in ["cat", "dog", "rabbit"]:\n'
+            '    print(animal)\n'
+            '```\n'
+            '\n'
+            'Python prints each item one at a time.\n'
+            '\n'
+            '    # Worked Example\n'
+            '    ```python\n'
+            'for letter in "cat":\n'
+            '    print(letter)\n'
+            '```\n'
+            '\n'
+            'The loop variable is `letter`, and its values are `c`, `a`, and `t`.\n'
+            '\n'
+            '    # Beginner-Friendly Explanation\n'
+            "    Read the loop as: 'For each current item in this sequence, run the indented code.' On the first iteration the variable holds the first item, then the second, and so on.\n"
+            '\n'
+            '    # Try It Yourself\n'
+            '    Loop through a short word and print each character.\n'
+            '\n'
+            '    # Guided Exercise\n'
+            '    Use `for letter in "cat":` and print `letter`.\n'
+            '\n'
+            '    # Independent Exercise\n'
+            '    Loop through a sequence of three values and print each one twice using two print statements in the loop body.\n'
+            '\n'
+            '    # Hints\n'
+            '    Focus on the current item. The loop supplies it for you.\n'
+            '\n'
+            '    # Common Mistakes\n'
+            '    - Putting the loop variable outside the loop body when it is needed inside.\n'
+            '- Thinking the variable stores every item at once.\n'
+            '- Forgetting the colon or indentation.\n'
+            '\n'
+            '    # Short Quiz\n'
+            '    1. What does the loop variable represent?\n'
+            '2. How many times does a loop over three items run?\n'
+            '3. What happens after one iteration?\n'
+            '\n'
+            '    # Answer and Explanation\n'
+            '    1. It represents the current item.\n'
+            '2. Three times.\n'
+            '3. Python moves to the next item and runs the body again.\n'
+            '\n'
+            '    # Summary\n'
+            '    A for loop processes items one at a time, making repeated processing easy to read.\n'
+            '\n'
+            '    # Practice/Review\n'
+            '    Predict the number of iterations for the words `Python`, `code`, and an empty string.\n'
+            '\n'
+            '    # Optional Challenge\n'
+            "    Explain in plain English what 'current item' means.\n"
+        ),
+        "exercises": [
+            {
+                "instructions": 'Print each character in Python.',
+                "starter_code": 'for letter in "Python":\n    print(letter)\n',
+                "expected_output": 'P\ny\nt\nh\no\nn',
+            },
+            {
+                "instructions": 'Print each item on its own line.',
+                "starter_code": 'for item in ["red", "green", "blue"]:\n    print(item)\n',
+                "expected_output": 'red\ngreen\nblue',
+            },
+        ],
     },
     {
-        "title": "Loop Variables",
-        "content": """
-## Lesson 9: Loop Variables
-
-**Learning objectives**
-- Explain how a loop variable changes between iterations.
-- Predict the value of a loop variable at a particular point.
-- Use meaningful loop variable names.
-
-## Explanation
-
-In a `for` loop, the loop variable changes automatically as Python moves through the sequence.
-
-```python
-for animal in ["cat", "dog", "rabbit"]:
-    print(animal)
-```
-
-You can think of `animal` as a temporary name for **the current item**.
-
-Second iteration: `animal` is `"dog"`.
-Third iteration: `animal` is `"rabbit"`.
-
-The loop variable is not a special kind of variable. It is an ordinary variable that Python updates for each iteration.
-
-## Worked example
-
-```python
-for temperature in [12, 15, 18]:
-    print("Temperature:", temperature)
-```
-
-The same variable name makes sense because `temperature` describes each current value.
-
-## Try it yourself
-
-Write a loop over three names and print:
-
-```text
-Hello, <name>
-```
-
-for each one.
-
-## Guided exercise
-
-Given:
-
-```python
-for score in [60, 75, 90]:
-    print(score)
-```
-
-Answer:
-
-- What is `score` on the first iteration?
-- What is `score` on the second iteration?
-- What is `score` on the third iteration?
-
-Then modify the program to print `Score: <value>`.
-
-## Independent exercise
-
-Create a sequence of four prices and print each price with a label.
-
-## Predict before running
-
-What is printed?
-
-```python
-for letter in ["A", "B", "C"]:
-    print("Current:", letter)
-```
-
-What is the value of `letter` on the **second** iteration?
-
-## Debugging exercise
-
-A learner writes:
-
-```python
-for number in [10, 20, 30]:
-    print(numbers)
-```
-
-What is wrong?
-
-**Answer:** The loop variable is named `number`, but the `print()` statement tries to use `numbers`. Those are different names.
-
-## Common mistakes
-
-- Mixing up singular and plural variable names.
-- Assuming the loop variable has the same value on every iteration.
-- Choosing vague names that make the code harder to read.
-
-## Short quiz
-
-**1. What will `letter` contain on the second iteration?**
-
-```python
-for letter in ["x", "y", "z"]:
-    print(letter)
-```
-
-**Answer:** `"y"`.
-
-**2. Why is `score` a good loop variable name when processing scores?**
-
-**Answer:** It clearly describes the current value.
-
-**3. Is the loop variable updated by the `for` loop?**
-
-**Answer:** Yes. Python assigns the next sequence item to it on each iteration.
-
-## Summary
-
-A loop variable represents the current item. Good loop variable names make code easier to understand and make later exercises easier to reason about.
-
-## Review practice
-
-Rewrite three loops using meaningful variable names instead of `x` or `i` when the meaning is obvious.
-
-## Optional challenge
-
-Use two different loop variables in two separate loops and explain why their names make each loop easier to read.
-""",
+        "title": 'Lesson 9 — Understanding the Loop Variable',
+        "content": (
+            '    # Module: For Loops\n'
+            '    # Learning Objectives\n'
+            '    - Predict how a loop variable changes.\n'
+            '- Use clear loop-variable names.\n'
+            '- Explain what the loop variable contains on a given iteration.\n'
+            '\n'
+            '    # Why This Matters\n'
+            '    Understanding the loop variable prevents a common beginner mistake: thinking the variable is a permanent label for the whole sequence.\n'
+            '\n'
+            '    # Explanation\n'
+            '    The loop variable changes automatically as the for loop moves through its sequence. In `for animal in ["cat", "dog"]`, the variable `animal` refers first to `cat` and then to `dog`.\n'
+            '\n'
+            '    # Examples\n'
+            '    ```python\n'
+            'for animal in ["cat", "dog", "rabbit"]:\n'
+            '    print(animal)\n'
+            '```\n'
+            '\n'
+            'The second iteration has `animal == "dog"`.\n'
+            '\n'
+            '    # Worked Example\n'
+            '    Meaningful names improve readability:\n'
+            '```python\n'
+            'for temperature in [18, 21, 24]:\n'
+            '    print(temperature)\n'
+            '```\n'
+            '\n'
+            '`temperature` tells the reader what the current value represents.\n'
+            '\n'
+            '    # Beginner-Friendly Explanation\n'
+            '    The loop variable name is chosen by the programmer. `item`, `number`, `name`, and `score` are ordinary variable names. Python does not treat `item` as a special keyword.\n'
+            '\n'
+            '    # Try It Yourself\n'
+            '    Predict the second loop-variable value for a three-item sequence.\n'
+            '\n'
+            '    # Guided Exercise\n'
+            '    Write a loop over `hello` and print the current character.\n'
+            '\n'
+            '    # Independent Exercise\n'
+            '    Choose a descriptive variable name for a loop that processes prices.\n'
+            '\n'
+            '    # Hints\n'
+            "    Ask: 'What is the current item right now?' That is the value stored in the loop variable.\n"
+            '\n'
+            '    # Common Mistakes\n'
+            '    - Assuming the variable contains the whole sequence.\n'
+            '- Using a misleading name that hides what the current value means.\n'
+            '\n'
+            '    # Short Quiz\n'
+            '    1. Does the loop variable change?\n'
+            '2. Does its name have to be `item`?\n'
+            '3. What is in the variable during the second iteration of `[10, 20, 30]`?\n'
+            '\n'
+            '    # Answer and Explanation\n'
+            '    1. Yes.\n'
+            '2. No; use a clear descriptive name.\n'
+            '3. The value is 20.\n'
+            '\n'
+            '    # Summary\n'
+            '    A loop variable represents the current item and changes as the for loop progresses.\n'
+            '\n'
+            '    # Practice/Review\n'
+            '    Trace the loop variable for `[4, 9, 2]` and write its value on each iteration.\n'
+            '\n'
+            '    # Optional Challenge\n'
+            '    Rewrite a loop using a more descriptive variable name without changing its behavior.\n'
+        ),
+        "exercises": [
+            {
+                "instructions": 'Print the current animal on each iteration.',
+                "starter_code": 'for animal in ["cat", "dog", "rabbit"]:\n    print(animal)\n',
+                "expected_output": 'cat\ndog\nrabbit',
+            },
+            {
+                "instructions": 'Print the second-item value by processing the sequence in order.',
+                "starter_code": 'for value in [10, 20, 30]:\n    print(value)\n',
+                "expected_output": '10\n20\n30',
+            },
+        ],
     },
     {
-        "title": "Understanding Each Iteration",
-        "content": """
-## Lesson 10: Understanding Each Iteration
-
-**Learning objectives**
-- Trace a `for` loop one iteration at a time.
-- Distinguish the sequence from the loop body.
-- Predict output before running code.
-
-## Explanation
-
-A `for` loop does repeated work by taking one value at a time from a sequence.
-
-```python
-for number in [2, 4, 6]:
-    print(number)
-```
-
-The execution is:
-
-1. `number` becomes `2`; print `2`.
-2. `number` becomes `4`; print `4`.
-3. `number` becomes `6`; print `6`.
-4. There are no more values; the loop ends.
-
-This is different from the `while` loop cycle. With `while`, you explicitly manage the condition and often update a counter yourself. With `for`, Python moves through the sequence for you.
-
-## Worked example
-
-```python
-for name in ["Aisha", "Ben", "Carlos"]:
-    print("Welcome", name)
-```
-
-The body runs three times. Each time it uses a different current name.
-
-## Try it yourself
-
-Change the names to three places you would like to visit.
-
-## Guided exercise
-
-Trace:
-
-```python
-for value in [5, 10, 15]:
-    print(value + 1)
-```
-
-Write the output and identify the value of `value` on each iteration.
-
-## Independent exercise
-
-Create a `for` loop over four numbers and print whether each number is above `10` using an `if` statement from Level 2.
-
-## Predict before running
-
-```python
-for number in [1, 3, 5]:
-    print(number * 2)
-```
-
-What is printed?
-
-## Common mistakes
-
-- Thinking Python runs the whole sequence at once.
-- Forgetting that the body runs once per item.
-- Confusing the current loop variable with the entire sequence.
-
-## Short quiz
-
-**1. How many times does the body run for a sequence of four items?**
-
-**Answer:** Four times.
-
-**2. Does the `for` loop need to manually increment the loop variable?**
-
-**Answer:** No. Python moves to the next sequence item automatically.
-
-**3. What does one iteration mean here?**
-
-**Answer:** One execution of the loop body for one sequence value.
-
-## Summary
-
-The key idea of a `for` loop is simple: get the next value, place it in the loop variable, run the body, and continue until there are no more values.
-
-## Review practice
-
-Trace one `for` loop and one `while` loop side by side. Write one sentence about how the repetition is controlled in each.
-
-## Optional challenge
-
-Create a loop that turns four Celsius temperatures into Fahrenheit values using the formula `C * 9 / 5 + 32`.
-""",
+        "title": 'Lesson 10 — range()',
+        "content": (
+            '    # Module: range()\n'
+            '    # Learning Objectives\n'
+            '    - Understand the purpose of range().\n'
+            '- Use range() with a for loop.\n'
+            '- Understand that the stop value is excluded.\n'
+            '\n'
+            '    # Why This Matters\n'
+            '    Typing every number in a sequence is tedious. `range()` gives a for loop a controlled sequence of integers without requiring you to type them all.\n'
+            '\n'
+            '    # Explanation\n'
+            '    With one argument, `range(n)` starts at 0 and continues up to, but not including, `n`. So `range(5)` is used by a loop to visit 0, 1, 2, 3, and 4.\n'
+            '\n'
+            '    # Examples\n'
+            '    ```python\n'
+            'for number in range(5):\n'
+            '    print(number)\n'
+            '```\n'
+            '\n'
+            'Output:\n'
+            '```text\n'
+            '0\n'
+            '1\n'
+            '2\n'
+            '3\n'
+            '4\n'
+            '```\n'
+            '\n'
+            '    # Worked Example\n'
+            '    To print 1 through 5, write:\n'
+            '```python\n'
+            'for number in range(1, 6):\n'
+            '    print(number)\n'
+            '```\n'
+            '\n'
+            'The stop value 6 is not printed.\n'
+            '\n'
+            '    # Beginner-Friendly Explanation\n'
+            "    The easiest way to avoid the 'why is 5 missing?' question is to remember: **the stop value is a boundary, not a value included in the sequence.** `range(1, 6)` reaches values before 6.\n"
+            '\n'
+            '    # Try It Yourself\n'
+            '    Use `range(5)` to print 0 through 4.\n'
+            '\n'
+            '    # Guided Exercise\n'
+            '    Write a loop with `range(1, 4)` and predict the output.\n'
+            '\n'
+            '    # Independent Exercise\n'
+            '    Print numbers 1 through 10 using `range()`.\n'
+            '\n'
+            '    # Hints\n'
+            '    Look at the stop number first, then ask what values appear before it.\n'
+            '\n'
+            '    # Common Mistakes\n'
+            '    - Expecting the stop value to be included.\n'
+            '- Forgetting that one-argument range starts at zero.\n'
+            '- Using the wrong start value for a task that begins at 1.\n'
+            '\n'
+            '    # Short Quiz\n'
+            '    1. What values appear in `range(5)`?\n'
+            '2. Is 5 included?\n'
+            '3. What does `range(1, 6)` print?\n'
+            '\n'
+            '    # Answer and Explanation\n'
+            '    1. 0 through 4.\n'
+            '2. No.\n'
+            '3. 1 through 5.\n'
+            '\n'
+            '    # Summary\n'
+            '    `range()` creates a predictable sequence of integers for a loop, with the stop value excluded.\n'
+            '\n'
+            '    # Practice/Review\n'
+            '    Without running code, write the values produced by `range(3)`, `range(1, 4)`, and `range(2, 5)`.\n'
+            '\n'
+            '    # Optional Challenge\n'
+            '    Use `range()` to print 10 through 15.\n'
+        ),
+        "exercises": [
+            {
+                "instructions": 'Print the values produced by range(5).',
+                "starter_code": 'for number in range(5):\n    print(number)\n',
+                "expected_output": '0\n1\n2\n3\n4',
+            },
+            {
+                "instructions": 'Print 1 through 5.',
+                "starter_code": 'for number in range(1, 6):\n    print(number)\n',
+                "expected_output": '1\n2\n3\n4\n5',
+            },
+        ],
     },
     {
-        "title": "range()",
-        "content": """
-## Lesson 11: `range()`
-
-**Learning objectives**
-- Understand what `range()` produces for a simple loop.
-- Use `range()` with one value.
-- Understand that counting starts at `0`.
-
-## Explanation
-
-Often you want to repeat something a certain number of times without first creating a sequence by hand. Python provides `range()` for this.
-
-Start with:
-
-```python
-range(5)
-```
-
-For a beginner, think of `range(5)` as meaning the counting values:
-
-```text
-0, 1, 2, 3, 4
-```
-
-Notice that `5` itself is not included.
-
-Now combine it with a `for` loop:
-
-```python
-for number in range(5):
-    print(number)
-```
-
-Output:
-
-```text
-0
-1
-2
-3
-4
-```
-
-## Why does counting start at 0?
-
-Python commonly uses zero-based counting in programming. You do not need to memorise every historical reason yet. What matters now is that `range(5)` starts at `0` and stops before `5`.
-
-## Worked example
-
-```python
-for number in range(3):
-    print("Round", number)
-```
-
-Output:
-
-```text
-Round 0
-Round 1
-Round 2
-```
-
-## Try it yourself
-
-Change the example to run five rounds.
-
-## Guided exercise
-
-Write loops for:
-
-- `0` through `3`
-- `0` through `6`
-
-Predict the output before running them.
-
-## Independent exercise
-
-Write a loop that prints the message `Practice makes progress` exactly four times using `range()`.
-
-## Predict before running
-
-What does this print?
-
-```python
-for x in range(4):
-    print(x + 10)
-```
-
-Remember that the values from `range()` are `0`, `1`, `2`, and `3`.
-
-## Common mistakes
-
-- Expecting `range(5)` to include `5`.
-- Forgetting that `range()` starts at `0` when only one argument is supplied.
-- Confusing the loop variable with the number of repetitions.
-
-## Short quiz
-
-**1. What values does `range(5)` produce?**
-
-**Answer:** `0, 1, 2, 3, 4`.
-
-**2. How many values are there in `range(5)`?**
-
-**Answer:** Five values.
-
-**3. Does the number `5` appear in the sequence?**
-
-**Answer:** No. The stop value is excluded.
-
-## Summary
-
-`range()` is a convenient way to generate a sequence of counting values. With one argument, `range(n)` starts at `0` and stops before `n`.
-
-## Review practice
-
-Predict the output of `for n in range(6): print(n * 2)` before running it.
-
-## Optional challenge
-
-Use `range(8)` to label eight practice questions from `0` to `7`, then adjust the output so the labels shown to the user start at `1`.
-""",
+        "title": 'Lesson 11 — range() with Start, Stop, and Step',
+        "content": (
+            '    # Module: range()\n'
+            '    # Learning Objectives\n'
+            '    - Understand start, stop, and step.\n'
+            '- Use a step to skip values.\n'
+            '- Use a negative step for descending sequences.\n'
+            '\n'
+            '    # Why This Matters\n'
+            '    A three-part range gives you control over where the sequence begins, where it stops, and how it changes from one value to the next.\n'
+            '\n'
+            '    # Explanation\n'
+            '    The form is `range(start, stop, step)`. Start is the first value, stop is excluded, and step controls the amount added or subtracted between values.\n'
+            '\n'
+            '    # Examples\n'
+            '    ```python\n'
+            'for number in range(0, 10, 2):\n'
+            '    print(number)\n'
+            '```\n'
+            '\n'
+            'This prints 0, 2, 4, 6, and 8.\n'
+            '\n'
+            '    # Worked Example\n'
+            '    A countdown uses a negative step:\n'
+            '```python\n'
+            'for number in range(5, 0, -1):\n'
+            '    print(number)\n'
+            '```\n'
+            '\n'
+            'Output: 5, 4, 3, 2, 1.\n'
+            '\n'
+            '    # Beginner-Friendly Explanation\n'
+            '    For `range(2, 10, 3)`, start at 2, then add 3: 2, 5, 8. The next value would be 11, which has passed the stop boundary of 10.\n'
+            '\n'
+            '    # Try It Yourself\n'
+            '    Print the even numbers below 10.\n'
+            '\n'
+            '    # Guided Exercise\n'
+            '    Use `range(0, 10, 2)` and print the loop variable.\n'
+            '\n'
+            '    # Independent Exercise\n'
+            '    Create a countdown from 10 to 2 using a step of -2.\n'
+            '\n'
+            '    # Hints\n'
+            '    Read the three arguments as start, stop, step in that order.\n'
+            '\n'
+            '    # Common Mistakes\n'
+            '    - Using a positive step for a countdown.\n'
+            '- Forgetting the stop value is excluded.\n'
+            '- Choosing a step that skips the values you wanted.\n'
+            '\n'
+            '    # Short Quiz\n'
+            '    1. What does the step control?\n'
+            '2. What does -1 do?\n'
+            '3. Which values appear in `range(2, 9, 3)`?\n'
+            '\n'
+            '    # Answer and Explanation\n'
+            '    1. It controls how much the sequence changes.\n'
+            '2. It moves downward by one.\n'
+            '3. 2, 5, and 8.\n'
+            '\n'
+            '    # Summary\n'
+            '    Start, stop, and step let a for loop walk through a precise numeric pattern.\n'
+            '\n'
+            '    # Practice/Review\n'
+            '    Predict `range(1, 10, 3)` and `range(10, 3, -2)` without running them.\n'
+            '\n'
+            '    # Optional Challenge\n'
+            '    Print every fourth number from 4 through 20.\n'
+        ),
+        "exercises": [
+            {
+                "instructions": 'Print the even numbers below 10.',
+                "starter_code": 'for number in range(0, 10, 2):\n    print(number)\n',
+                "expected_output": '0\n2\n4\n6\n8',
+            },
+            {
+                "instructions": 'Print 10, 8, 6, 4, and 2.',
+                "starter_code": 'for number in range(10, 0, -2):\n    print(number)\n',
+                "expected_output": '10\n8\n6\n4\n2',
+            },
+        ],
     },
     {
-        "title": "range() with Start, Stop, and Step",
-        "content": """
-## Lesson 12: `range()` with Start, Stop, and Step
-
-**Learning objectives**
-- Use the start, stop, and step arguments of `range()`.
-- Predict the values produced by a range.
-- Count forwards and backwards.
-
-## Explanation
-
-`range()` can accept more information:
-
-```python
-range(start, stop, step)
-```
-
-For example:
-
-```python
-range(0, 10, 2)
-```
-
-This means:
-
-- start at `0`
-- stop before `10`
-- move by `2`
-
-The values are:
-
-```text
-0, 2, 4, 6, 8
-```
-
-The stop value is still excluded.
-
-## Worked example: count by twos
-
-```python
-for number in range(2, 11, 2):
-    print(number)
-```
-
-Output:
-
-```text
-2
-4
-6
-8
-10
-```
-
-## Worked example: count backwards
-
-```python
-for number in range(5, 0, -1):
-    print(number)
-```
-
-Output:
-
-```text
-5
-4
-3
-2
-1
-```
-
-The negative step moves downward.
-
-## Try it yourself
-
-Predict the values in:
-
-```python
-range(1, 10, 3)
-```
-
-## Guided exercise
-
-Write a loop using `range()` that prints:
-
-```text
-10
-8
-6
-4
-2
-```
-
-## Independent exercise
-
-Print every third number from `3` through `18`.
-
-## Predict before running
-
-What is printed?
-
-```python
-for n in range(3, 12, 4):
-    print(n)
-```
-
-## Common mistakes
-
-- Choosing a positive step when you need to count backwards.
-- Forgetting that the stop value is excluded.
-- Choosing a step that can never reach any value before the stop.
-
-## Short quiz
-
-**1. What does the third argument represent?**
-
-**Answer:** The step, or how much the value changes between iterations.
-
-**2. What values come from `range(10, 0, -2)`?**
-
-**Answer:** `10, 8, 6, 4, 2`.
-
-**3. Why is `10` included in `range(2, 11, 2)`?**
-
-**Answer:** Because the loop stops before `11`, and `10` is the final value before that stopping point.
-
-## Summary
-
-Three-argument `range(start, stop, step)` lets you control where counting starts, where it stops, and how quickly it moves.
-
-## Review practice
-
-Create three `range()` expressions: one for counting by `1`, one by `5`, and one counting backwards.
-
-## Optional challenge
-
-Print the numbers from `100` down to `0` in steps of `10`.
-""",
+        "title": 'Lesson 12 — Choosing while or for',
+        "content": (
+            '    # Module: range()\n'
+            '    # Learning Objectives\n'
+            '    - Compare while and for loops.\n'
+            '- Choose a loop based on what controls repetition.\n'
+            '- Explain the choice in plain language.\n'
+            '\n'
+            '    # Why This Matters\n'
+            '    Python gives you more than one looping tool because problems control repetition in different ways.\n'
+            '\n'
+            '    # Explanation\n'
+            '    A `for` loop is often a natural fit when you have a sequence or a known number of repetitions. A `while` loop is often a natural fit when the program should continue while a condition remains true. This is a guideline, not an absolute rule.\n'
+            '\n'
+            '    # Examples\n'
+            '    Known count:\n'
+            '```python\n'
+            'for number in range(5):\n'
+            '    print(number)\n'
+            '```\n'
+            '\n'
+            'Condition-controlled:\n'
+            '```python\n'
+            'answer = ""\n'
+            'while answer != "yes":\n'
+            '    answer = input("Ready? " )\n'
+            '```\n'
+            '\n'
+            '    # Worked Example\n'
+            "    If a task says 'repeat exactly five times', `for` with `range()` is usually clear. If it says 'keep asking until the answer is valid', `while` often communicates the condition more directly.\n"
+            '\n'
+            '    # Beginner-Friendly Explanation\n'
+            '    The best question is: **What controls when the repetition happens?** A known set or known count often points toward `for`. A condition that changes over time often points toward `while`. Both can sometimes solve the same problem.\n'
+            '\n'
+            '    # Try It Yourself\n'
+            '    Choose a loop type for four short situations.\n'
+            '\n'
+            '    # Guided Exercise\n'
+            '    Use a for loop for a task that repeats exactly five times.\n'
+            '\n'
+            '    # Independent Exercise\n'
+            '    Describe a real situation where a while loop is easier to explain than a for loop.\n'
+            '\n'
+            '    # Hints\n'
+            '    Identify whether the problem gives you a sequence/count or a stopping condition.\n'
+            '\n'
+            '    # Common Mistakes\n'
+            '    - Treating the guideline as a strict rule.\n'
+            '- Choosing a loop because it was taught most recently.\n'
+            '- Ignoring which part of the problem actually controls repetition.\n'
+            '\n'
+            '    # Short Quiz\n'
+            '    1. When is `for` often convenient?\n'
+            '2. When is `while` often convenient?\n'
+            '3. Is the choice absolute?\n'
+            '\n'
+            '    # Answer and Explanation\n'
+            '    1. When processing a known sequence or known number of repetitions.\n'
+            '2. When repetition depends on a condition.\n'
+            '3. No; it is a practical guideline.\n'
+            '\n'
+            '    # Summary\n'
+            '    Choose the loop that makes the reason for repetition easiest to understand.\n'
+            '\n'
+            '    # Practice/Review\n'
+            '    Classify these tasks: count 1–100, process each character, ask until valid, repeat until a flag changes.\n'
+            '\n'
+            '    # Optional Challenge\n'
+            '    Rewrite a simple counting while loop using `for` and `range()`.\n'
+        ),
+        "exercises": [
+            {
+                "instructions": 'Repeat exactly five times using a for loop.',
+                "starter_code": 'for number in range(5):\n    print("Practice")\n',
+                "expected_output": 'Practice\nPractice\nPractice\nPractice\nPractice',
+            },
+            {
+                "instructions": 'Use a while loop to print 1, 2, and 3.',
+                "starter_code": 'count = 1\nwhile count <= 3:\n    print(count)\n    count += 1\n',
+                "expected_output": '1\n2\n3',
+            },
+        ],
     },
     {
-        "title": "Choosing while or for",
-        "content": """
-## Lesson 13: Choosing `while` or `for`
-
-**Learning objectives**
-- Explain a practical difference between `while` and `for`.
-- Choose a suitable loop for a problem.
-- Understand that the choice depends on the task, not a rigid rule.
-
-## Explanation
-
-Both `while` and `for` repeat code, but they often fit different kinds of problems.
-
-A `for` loop is convenient when you are going through a sequence or repeating a known number of times:
-
-```python
-for number in range(5):
-    print(number)
-```
-
-A `while` loop is often useful when repetition depends on a condition:
-
-```python
-password = ""
-
-while password != "python":
-    password = input("Password: ")
-```
-
-The first example naturally says "do this for these counting values." The second naturally says "keep going until this condition changes."
-
-This is a useful guideline, not an absolute law. Some problems can be solved in more than one way.
-
-## Worked comparison
-
-**Known number of attempts:**
-
-```python
-for attempt in range(3):
-    print("Try again")
-```
-
-**Unknown number of attempts:**
-
-```python
-choice = ""
-while choice != "quit":
-    choice = input("Type quit to stop: ")
-```
-
-## Try it yourself
-
-For each problem, choose `for` or `while` and explain why:
-
-1. Print numbers 1 to 50.
-2. Ask for a valid age until the user enters one.
-3. Print each of five labels.
-4. Keep asking whether to continue until the user says no.
-
-## Guided exercise
-
-Write a short note explaining why a `for` loop is a natural fit for processing exactly ten quiz scores.
-
-Then explain why a `while` loop is a natural fit for password validation where the number of attempts is not known.
-
-## Independent exercise
-
-Choose the loop for this scenario:
-
-"A game repeatedly asks the player whether they want another round. The game should continue until the player chooses to quit."
-
-Then describe the condition in plain English before writing code.
-
-## Prediction exercise
-
-Which loop would you choose for each code goal?
-
-- repeat exactly 7 times
-- process each item in a known sequence
-- continue until the user enters `stop`
-
-## Common mistakes
-
-- Treating `for` as "the counting loop" and `while` as "the only input loop". Both are more flexible than that.
-- Choosing a loop based only on personal habit instead of the problem's control pattern.
-
-## Short quiz
-
-**1. Which loop is often natural for a known number of repetitions?**
-
-**Answer:** `for`.
-
-**2. Which loop is often natural when the stopping point depends on a condition?**
-
-**Answer:** `while`.
-
-**3. Is the rule absolute?**
-
-**Answer:** No. It is a practical guideline.
-
-## Summary
-
-Use `for` when you naturally have values or a known repetition pattern to visit. Use `while` when the condition itself is the main reason to continue.
-
-## Review practice
-
-Explain your choice of loop for one known-length task and one condition-controlled task.
-
-## Optional challenge
-
-Solve the same small problem once with `for` and once with `while`. Compare which version is easier to read and explain why.
-""",
+        "title": 'Lesson 13 — break',
+        "content": (
+            '    # Module: Controlling Loops\n'
+            '    # Learning Objectives\n'
+            '    - Understand what break does.\n'
+            '- Use break to stop early.\n'
+            '- Recognize when an early exit is useful.\n'
+            '\n'
+            '    # Why This Matters\n'
+            '    Sometimes the program finds what it needs before a loop has reached its normal end. Continuing to process values would waste work or produce unwanted behavior.\n'
+            '\n'
+            '    # Explanation\n'
+            '    `break` immediately exits the current loop. It does not merely skip one iteration. It leaves the loop and continues with the first line after the loop.\n'
+            '\n'
+            '    # Examples\n'
+            '    ```python\n'
+            'for number in range(1, 10):\n'
+            '    if number == 5:\n'
+            '        break\n'
+            '    print(number)\n'
+            '```\n'
+            '\n'
+            'The output is 1, 2, 3, 4.\n'
+            '\n'
+            '    # Worked Example\n'
+            '    A search is a useful example. Once the target has been found, the loop may no longer need to continue checking later values.\n'
+            '\n'
+            '    # Beginner-Friendly Explanation\n'
+            '    You may also see `while True` with `break`:\n'
+            '```python\n'
+            'while True:\n'
+            '    word = input("Type quit to stop: " )\n'
+            '    if word == "quit":\n'
+            '        break\n'
+            '```\n'
+            '\n'
+            '`while True` keeps the loop condition true, while `break` supplies the exit point.\n'
+            '\n'
+            '    # Try It Yourself\n'
+            '    Stop a loop when it reaches 4.\n'
+            '\n'
+            '    # Guided Exercise\n'
+            '    Place `break` inside an if statement that checks the target value.\n'
+            '\n'
+            '    # Independent Exercise\n'
+            '    Write a small search that stops once it sees 7.\n'
+            '\n'
+            '    # Hints\n'
+            '    Ask whether continuing would still be useful. If not, an early exit may be appropriate.\n'
+            '\n'
+            '    # Common Mistakes\n'
+            '    - Putting break outside a loop.\n'
+            '- Expecting break to skip only one iteration.\n'
+            '- Placing break before the condition that should trigger it.\n'
+            '\n'
+            '    # Short Quiz\n'
+            '    1. What does `break` do?\n'
+            '2. Does it stop only one iteration?\n'
+            '3. Why is it useful in a search?\n'
+            '\n'
+            '    # Answer and Explanation\n'
+            '    1. It immediately exits the loop.\n'
+            '2. No; it exits the entire current loop.\n'
+            '3. It avoids unnecessary work after the target is found.\n'
+            '\n'
+            '    # Summary\n'
+            '    Use `break` when the loop has reached a deliberate early-exit point.\n'
+            '\n'
+            '    # Practice/Review\n'
+            '    Trace a loop that stops at 6 and identify which values are never processed.\n'
+            '\n'
+            '    # Optional Challenge\n'
+            '    Use `break` in a small repeated menu that exits when the user selects the exit option.\n'
+        ),
+        "exercises": [
+            {
+                "instructions": 'Stop before printing 4.',
+                "starter_code": 'for number in range(1, 8):\n    if number == 4:\n        break\n    print(number)\n',
+                "expected_output": '1\n2\n3',
+            },
+            {
+                "instructions": 'Stop after finding the first value equal to 7.',
+                "starter_code": 'for number in [2, 5, 7, 9]:\n    if number == 7:\n        print("Found")\n        break\n',
+                "expected_output": 'Found',
+            },
+        ],
     },
     {
-        "title": "break",
-        "content": """
-## Lesson 14: `break`
-
-**Learning objectives**
-- Understand what `break` does.
-- Exit a loop immediately when a condition is met.
-- Understand `while True` as an intentional loop pattern.
-
-## Explanation
-
-Sometimes a loop should stop before it reaches its normal ending condition. Python provides `break` for this.
-
-Example:
-
-```python
-while True:
-    word = input("Enter a word: ")
-
-    if word == "quit":
-        break
-
-    print("You entered:", word)
-```
-
-`while True` creates a loop whose condition is always true. That means the loop will not stop by itself. In this design, `break` provides the exit point.
-
-When the user enters `quit`, the `if` condition becomes true and `break` immediately leaves the loop. The `print()` statement is skipped on that iteration.
-
-## Worked example: find the first multiple of 7
-
-```python
-for number in range(1, 30):
-    if number % 7 == 0:
-        print("First multiple:", number)
-        break
-```
-
-The loop reaches `7`, prints it, and stops. It does not continue to `14`, `21`, or `28`.
-
-## Try it yourself
-
-Change the example so the loop stops when it finds the first number divisible by `5`.
-
-## Guided exercise
-
-Build a simple loop that keeps asking for words and stops when the user enters `stop`.
-
-Before coding, say in plain English: "Repeat until the user enters ___."
-
-## Independent exercise
-
-Use a `for` loop from `1` to `20` and stop at the first number that is divisible by `4`.
-
-## Prediction exercise
-
-What is printed?
-
-```python
-for n in range(1, 10):
-    if n == 4:
-        break
-    print(n)
-```
-
-## Common mistakes
-
-- Thinking `break` skips one iteration. It does more: it exits the entire loop.
-- Placing `break` outside the condition that should trigger it.
-- Using `while True` without a clear exit path.
-
-## Short quiz
-
-**1. What does `break` do?**
-
-**Answer:** It immediately exits the loop containing it.
-
-**2. Why can `while True` still be safe?**
-
-**Answer:** If the loop contains a clear and reachable `break`, the program can exit intentionally.
-
-**3. Does `break` continue to the next iteration?**
-
-**Answer:** No. It leaves the loop.
-
-## Summary
-
-`break` is useful when a loop should stop as soon as a particular event occurs. Use it deliberately and make the exit condition easy to understand.
-
-## Review practice
-
-Write one sentence comparing a normal `while` loop's stopping condition with a `while True` loop that uses `break`.
-
-## Optional challenge
-
-Search through numbers from `1` to `100` and stop when you find the first number that is both greater than `30` and divisible by `9`.
-""",
+        "title": 'Lesson 14 — continue',
+        "content": (
+            '    # Module: Controlling Loops\n'
+            '    # Learning Objectives\n'
+            '    - Understand what continue does.\n'
+            '- Skip the rest of one iteration.\n'
+            '- Distinguish continue from break.\n'
+            '\n'
+            '    # Why This Matters\n'
+            '    Sometimes one value should be ignored while the rest of the data still needs to be processed. `continue` is designed for that situation.\n'
+            '\n'
+            '    # Explanation\n'
+            '    `continue` skips the rest of the current iteration and moves to the next iteration. The loop itself does not end.\n'
+            '\n'
+            '    # Examples\n'
+            '    ```python\n'
+            'for number in range(1, 6):\n'
+            '    if number == 3:\n'
+            '        continue\n'
+            '    print(number)\n'
+            '```\n'
+            '\n'
+            'Output: 1, 2, 4, 5.\n'
+            '\n'
+            '    # Worked Example\n'
+            '    If a value should be ignored but later values still matter, `continue` is often clearer than `break`. The loop continues with the next value after the skipped one.\n'
+            '\n'
+            '    # Beginner-Friendly Explanation\n'
+            '    For `number == 3`, Python reaches `continue`, skips the print statement for that iteration, then returns to the top of the loop for 4.\n'
+            '\n'
+            '    # Try It Yourself\n'
+            '    Skip the number 3 while printing 1 through 5.\n'
+            '\n'
+            '    # Guided Exercise\n'
+            '    Put `continue` inside `if number == 3:` before the print statement.\n'
+            '\n'
+            '    # Independent Exercise\n'
+            '    Skip a single unwanted value from a numeric sequence.\n'
+            '\n'
+            '    # Hints\n'
+            '    Remember: break ends the loop; continue keeps the loop going.\n'
+            '\n'
+            '    # Common Mistakes\n'
+            '    - Using continue when you really need to stop.\n'
+            '- Placing continue after the code you intended to skip.\n'
+            '- Thinking continue freezes the loop variable.\n'
+            '\n'
+            '    # Short Quiz\n'
+            '    1. What does continue skip?\n'
+            '2. Does it end the loop?\n'
+            '3. Which keyword exits the loop entirely?\n'
+            '\n'
+            '    # Answer and Explanation\n'
+            '    1. It skips the rest of the current iteration.\n'
+            '2. No.\n'
+            '3. `break`.\n'
+            '\n'
+            '    # Summary\n'
+            "    `continue` skips one iteration's remaining work while `break` exits the loop.\n"
+            '\n'
+            '    # Practice/Review\n'
+            '    Predict outputs for two loops, one with break and one with continue.\n'
+            '\n'
+            '    # Optional Challenge\n'
+            '    Use continue to ignore zero values while processing a fixed set of numbers.\n'
+        ),
+        "exercises": [
+            {
+                "instructions": 'Print 1 through 5 but skip 3.',
+                "starter_code": 'for number in range(1, 6):\n    if number == 3:\n        continue\n    print(number)\n',
+                "expected_output": '1\n2\n4\n5',
+            },
+            {
+                "instructions": 'Print all values except 0.',
+                "starter_code": 'for number in [3, 0, 5, 7]:\n    if number == 0:\n        continue\n    print(number)\n',
+                "expected_output": '3\n5\n7',
+            },
+        ],
     },
     {
-        "title": "continue",
-        "content": """
-## Lesson 15: `continue`
-
-**Learning objectives**
-- Understand what `continue` does.
-- Distinguish `continue` from `break`.
-- Skip the remainder of one iteration without ending the loop.
-
-## Explanation
-
-`continue` tells Python to stop the current iteration and move on to the next one.
-
-Example:
-
-```python
-for number in range(1, 6):
-    if number == 3:
-        continue
-
-    print(number)
-```
-
-The output is:
-
-```text
-1
-2
-4
-5
-```
-
-When `number` is `3`, `continue` is reached. Python skips the remaining body for that iteration, so `print(number)` does not run for `3`. The loop then continues with `4`.
-
-## `break` vs `continue`
-
-- `break` → leave the loop completely.
-- `continue` → skip the rest of this iteration, then keep looping.
-
-## Worked example
-
-```python
-for score in [10, -2, 7, -5, 9]:
-    if score < 0:
-        continue
-    print(score)
-```
-
-Negative scores are skipped. The loop still processes later values.
-
-## Try it yourself
-
-Modify the example so that it skips the number `5` instead of `3`.
-
-## Guided exercise
-
-Print the numbers from `1` to `10`, but skip even numbers.
-
-Hint: combine the loop with the Level 2 `%` operator and an `if` condition.
-
-## Independent exercise
-
-Process five temperatures but skip any temperature below `0` so only non-negative values are printed.
-
-## Prediction exercise
-
-What is the exact output?
-
-```python
-for n in range(1, 6):
-    if n == 2 or n == 4:
-        continue
-    print(n)
-```
-
-## Common mistakes
-
-- Thinking `continue` ends the loop.
-- Putting useful work after `continue` in a way that can never execute for matching items.
-- Using `continue` when the goal is actually to stop processing everything.
-
-## Short quiz
-
-**1. What happens when `continue` runs?**
-
-**Answer:** The rest of the current loop body is skipped and the next iteration begins.
-
-**2. What is printed when the number is `3` in the earlier example?**
-
-**Answer:** Nothing for that iteration.
-
-**3. Which keyword ends the loop completely?**
-
-**Answer:** `break`.
-
-## Summary
-
-`continue` is a filtering tool inside a loop: it says, "I do not want to do the rest of this iteration, but I still want to keep looping."
-
-## Review practice
-
-Write two tiny examples: one where `break` is the correct tool, and one where `continue` is the correct tool.
-
-## Optional challenge
-
-Process the numbers `1` to `30`, skip numbers divisible by `3`, and print the rest.
-""",
+        "title": 'Lesson 15 — break vs continue',
+        "content": (
+            '    # Module: Controlling Loops\n'
+            '    # Learning Objectives\n'
+            '    - Compare break and continue.\n'
+            '- Predict the effect of each keyword.\n'
+            '- Choose the appropriate keyword for a problem.\n'
+            '\n'
+            '    # Why This Matters\n'
+            '    Both statements change normal loop flow, but they solve different problems. Being precise about that difference will help you debug loops later.\n'
+            '\n'
+            '    # Explanation\n'
+            "    `break` means 'leave the loop now.' `continue` means 'skip the rest of this iteration and move to the next one.'\n"
+            '\n'
+            '    # Examples\n'
+            '    Break example:\n'
+            '```python\n'
+            'for number in range(1, 6):\n'
+            '    if number == 3:\n'
+            '        break\n'
+            '    print(number)\n'
+            '```\n'
+            '\n'
+            'Continue example:\n'
+            '```python\n'
+            'for number in range(1, 6):\n'
+            '    if number == 3:\n'
+            '        continue\n'
+            '    print(number)\n'
+            '```\n'
+            '\n'
+            '    # Worked Example\n'
+            '    The break version prints 1 and 2. The continue version prints 1, 2, 4, and 5. The difference is what happens after the special value is reached.\n'
+            '\n'
+            '    # Beginner-Friendly Explanation\n'
+            '    Ask one question: **Do later iterations still need to happen?** If no, `break` may fit. If yes, but the current value should be skipped, `continue` may fit.\n'
+            '\n'
+            '    # Try It Yourself\n'
+            '    Classify short scenarios as break or continue.\n'
+            '\n'
+            '    # Guided Exercise\n'
+            '    Predict the output of one break example and one continue example.\n'
+            '\n'
+            '    # Independent Exercise\n'
+            '    Write your own one-sentence example of when each keyword would be useful.\n'
+            '\n'
+            '    # Hints\n'
+            '    Focus on intended behavior before choosing a keyword.\n'
+            '\n'
+            '    # Common Mistakes\n'
+            "    - Choosing by the word's name instead of the required behavior.\n"
+            '- Forgetting that continue allows later iterations.\n'
+            '- Putting the statement in the wrong branch.\n'
+            '\n'
+            '    # Short Quiz\n'
+            '    1. Which keyword exits the loop?\n'
+            '2. Which keyword skips only the current iteration?\n'
+            '3. What happens after continue?\n'
+            '\n'
+            '    # Answer and Explanation\n'
+            '    1. `break`.\n'
+            '2. `continue`.\n'
+            '3. Python moves to the next iteration.\n'
+            '\n'
+            '    # Summary\n'
+            '    Break ends; continue skips and keeps going.\n'
+            '\n'
+            '    # Practice/Review\n'
+            '    Predict whether each of four example loops ends early or skips a value.\n'
+            '\n'
+            '    # Optional Challenge\n'
+            '    Create two tiny programs that demonstrate the difference as clearly as possible.\n'
+        ),
+        "exercises": [
+            {
+                "instructions": 'Stop the loop when the value reaches 3.',
+                "starter_code": 'for number in range(1, 6):\n    if number == 3:\n        break\n    print(number)\n',
+                "expected_output": '1\n2',
+            },
+            {
+                "instructions": 'Skip 3 but continue with the remaining values.',
+                "starter_code": 'for number in range(1, 6):\n    if number == 3:\n        continue\n    print(number)\n',
+                "expected_output": '1\n2\n4\n5',
+            },
+        ],
     },
     {
-        "title": "break vs continue",
-        "content": """
-## Lesson 16: `break` vs `continue`
-
-**Learning objectives**
-- Compare `break` and `continue` precisely.
-- Predict how each changes program flow.
-- Debug a loop where the wrong control statement is used.
-
-## Side-by-side explanation
-
-Consider these two programs.
-
-### `break`
-
-```python
-for n in range(1, 6):
-    if n == 3:
-        break
-    print(n)
-```
-
-Output:
-
-```text
-1
-2
-```
-
-The loop stops completely when `n` becomes `3`.
-
-### `continue`
-
-```python
-for n in range(1, 6):
-    if n == 3:
-        continue
-    print(n)
-```
-
-Output:
-
-```text
-1
-2
-4
-5
-```
-
-Only the iteration for `3` is skipped.
-
-## Try it yourself
-
-Predict the output for each version before running it.
-
-## Guided exercise
-
-Suppose a program processes orders. If an order has an invalid item count, you want to skip that order but continue processing the rest. Should you use `break` or `continue`? Explain why.
-
-## Independent exercise
-
-Suppose a security check discovers a critical failure and there is no reason to process further records. Should you use `break` or `continue`? Explain why.
-
-## Debugging exercise
-
-The programmer wants to skip negative numbers but accidentally writes:
-
-```python
-for number in [4, -2, 7, -1, 8]:
-    if number < 0:
-        break
-    print(number)
-```
-
-Explain why the program stops at the first negative number. Change only the control statement so later positive values are still processed.
-
-## Common mistakes
-
-- Choosing a keyword by memorising a phrase instead of considering the desired control flow.
-- Forgetting that `break` affects the whole loop.
-
-## Short quiz
-
-**1. Which keyword means "leave the loop"?**
-
-**Answer:** `break`.
-
-**2. Which keyword means "skip this iteration"?**
-
-**Answer:** `continue`.
-
-**3. If you want to ignore one bad record but continue processing, which is usually appropriate?**
-
-**Answer:** `continue`.
-
-## Summary
-
-Ask one question when choosing between them: **Do I want the loop to continue with another iteration?** If yes, `continue` may fit. If no, `break` may fit.
-
-## Review practice
-
-Explain both keywords without using the words "stop" or "skip". This forces you to describe the control flow precisely.
-
-## Optional challenge
-
-Write a loop that prints numbers from `1` to `20`, skips `8`, and stops completely at `15`.
-""",
+        "title": 'Lesson 16 — Nested Loops',
+        "content": (
+            '    # Module: Nested Loops\n'
+            '    # Learning Objectives\n'
+            '    - Understand a loop inside another loop.\n'
+            '- Distinguish the outer and inner loops.\n'
+            '- Trace execution order.\n'
+            '\n'
+            '    # Why This Matters\n'
+            '    Some problems contain two levels of repetition, such as rows and columns in a grid. A nested loop gives the program a way to represent both levels.\n'
+            '\n'
+            '    # Explanation\n'
+            '    A **nested loop** is a loop inside another loop. For each value handled by the outer loop, the inner loop runs through all of its values.\n'
+            '\n'
+            '    # Examples\n'
+            '    ```python\n'
+            'for row in range(3):\n'
+            '    for column in range(2):\n'
+            '        print(row, column)\n'
+            '```\n'
+            '\n'
+            'The inner loop completes before the outer loop moves to its next value.\n'
+            '\n'
+            '    # Worked Example\n'
+            '    For `row = 0`, the inner loop prints `0 0` and `0 1`. Then row becomes 1, and the inner loop starts again. This produces six coordinate pairs in total.\n'
+            '\n'
+            '    # Beginner-Friendly Explanation\n'
+            '    With 3 outer iterations and 2 inner iterations, the inner body runs 3 × 2 = 6 times. Thinking about one outer value at a time makes the pattern manageable.\n'
+            '\n'
+            '    # Try It Yourself\n'
+            '    Predict how many times the inner loop runs for 2 outer values and 4 inner values.\n'
+            '\n'
+            '    # Guided Exercise\n'
+            '    Write a 2 by 2 coordinate loop.\n'
+            '\n'
+            '    # Independent Exercise\n'
+            '    Print a small 3 by 3 pattern.\n'
+            '\n'
+            '    # Hints\n'
+            '    Trace the outer loop first, then list all inner-loop values for that outer value.\n'
+            '\n'
+            '    # Common Mistakes\n'
+            '    - Reusing the same variable name in both loops.\n'
+            '- Forgetting the inner loop starts again for each outer value.\n'
+            '- Trying to calculate the entire output in one mental step.\n'
+            '\n'
+            '    # Short Quiz\n'
+            '    1. What is a nested loop?\n'
+            '2. How many inner executions occur for 3 outer and 2 inner repetitions?\n'
+            '3. Which loop runs completely first for one outer value?\n'
+            '\n'
+            '    # Answer and Explanation\n'
+            '    1. A loop inside another loop.\n'
+            '2. Six.\n'
+            '3. The inner loop runs completely.\n'
+            '\n'
+            '    # Summary\n'
+            '    Nested loops create multiple layers of repetition. Start small and trace one outer iteration at a time.\n'
+            '\n'
+            '    # Practice/Review\n'
+            '    Draw a trace for a 2 by 3 nested loop.\n'
+            '\n'
+            '    # Optional Challenge\n'
+            '    Use nested loops to print coordinate pairs for a small grid and explain the output order.\n'
+        ),
+        "exercises": [
+            {
+                "instructions": 'Print coordinates for a 2 by 2 grid.',
+                "starter_code": 'for row in range(2):\n    for column in range(2):\n        print(row, column)\n',
+                "expected_output": '0 0\n0 1\n1 0\n1 1',
+            },
+            {
+                "instructions": 'Print coordinates for rows 0–1 and columns 0–2.',
+                "starter_code": 'for row in range(2):\n    for column in range(3):\n        print(row, column)\n',
+                "expected_output": '0 0\n0 1\n0 2\n1 0\n1 1\n1 2',
+            },
+        ],
     },
     {
-        "title": "What Is a Nested Loop?",
-        "content": """
-## Lesson 17: What Is a Nested Loop?
-
-**Learning objectives**
-- Understand what a nested loop is.
-- Distinguish the outer loop from the inner loop.
-- Trace the execution order of a nested loop.
-
-## Explanation
-
-A **nested loop** is a loop inside another loop.
-
-Example:
-
-```python
-for row in range(3):
-    for column in range(2):
-        print(row, column)
-```
-
-The outer loop chooses a row. For each row, the inner loop runs through **all** its column values.
-
-Trace it:
-
-```text
-row = 0, column = 0
-row = 0, column = 1
-row = 1, column = 0
-row = 1, column = 1
-row = 2, column = 0
-row = 2, column = 1
-```
-
-The important idea is that the inner loop completes before the outer loop moves to its next value.
-
-## Tiny example
-
-```python
-for outer in range(2):
-    for inner in range(3):
-        print("work")
-```
-
-The word `work` is printed `2 * 3 = 6` times.
-
-## Try it yourself
-
-Predict how many times the inner body runs for:
-
-```python
-for a in range(3):
-    for b in range(4):
-        print(a, b)
-```
-
-## Guided exercise
-
-Trace:
-
-```python
-for row in range(2):
-    for column in range(2):
-        print(row, column)
-```
-
-Write the four lines of output in order.
-
-## Independent exercise
-
-Use nested loops to print a 3 by 3 grid of coordinates.
-
-## Common mistakes
-
-- Expecting the outer loop to move to the next value before the inner loop finishes.
-- Losing track of which variable belongs to which loop.
-- Overusing nested loops when a simpler solution would be clearer.
-
-## Short quiz
-
-**1. What is a nested loop?**
-
-**Answer:** A loop whose body contains another loop.
-
-**2. Which loop completes all of its iterations first?**
-
-**Answer:** The inner loop, for the current outer iteration.
-
-**3. How many inner iterations occur when the outer loop runs 3 times and the inner loop runs 2 times for each outer value?**
-
-**Answer:** 6.
-
-## Summary
-
-Nested loops create a second level of repetition. They are useful for grids, tables, and combinations, but they should be introduced carefully because the execution can become harder to trace.
-
-## Review practice
-
-Draw two circles labelled "outer" and "inner" and describe in words which one changes first while Python is executing the body.
-
-## Optional challenge
-
-Print all coordinate pairs `(x, y)` where `x` ranges from `1` to `3` and `y` ranges from `1` to `2`.
-""",
+        "title": 'Lesson 17 — Nested Loops in Practice',
+        "content": (
+            '    # Module: Nested Loops\n'
+            '    # Learning Objectives\n'
+            '    - Use nested loops for small tables.\n'
+            '- Understand repeated combinations.\n'
+            '- Apply the outer/inner loop pattern to a practical task.\n'
+            '\n'
+            '    # Why This Matters\n'
+            '    Nested loops are useful whenever every item in one small group needs to be paired with every item in another group.\n'
+            '\n'
+            '    # Explanation\n'
+            '    The outer loop chooses one value for the larger repetition level. The inner loop completes its work for every value belonging to that outer choice.\n'
+            '\n'
+            '    # Examples\n'
+            '    ```python\n'
+            'for number in range(1, 4):\n'
+            '    for multiplier in range(1, 4):\n'
+            '        print(number * multiplier)\n'
+            '```\n'
+            '\n'
+            'The inner loop calculates all three products for 1, then for 2, then for 3.\n'
+            '\n'
+            '    # Worked Example\n'
+            '    For `number = 2`, the inner loop prints 2, 4, and 6. Then the outer loop advances to 3 and the inner loop begins again.\n'
+            '\n'
+            '    # Beginner-Friendly Explanation\n'
+            '    The same pattern can represent rows and columns, combinations of choices, or a small multiplication table. The key is that the inner loop is tied to the current outer value.\n'
+            '\n'
+            '    # Try It Yourself\n'
+            '    Create a 3 by 3 coordinate table.\n'
+            '\n'
+            '    # Guided Exercise\n'
+            '    Use two ranges and print the product of the current values.\n'
+            '\n'
+            '    # Independent Exercise\n'
+            '    Build a small multiplication table from 1 through 3.\n'
+            '\n'
+            '    # Hints\n'
+            '    First decide what the outer loop represents and what the inner loop represents.\n'
+            '\n'
+            '    # Common Mistakes\n'
+            '    - Mixing up the roles of the outer and inner variables.\n'
+            '- Forgetting to use the current outer value inside the inner loop.\n'
+            '- Making the nested loops too large before understanding the small case.\n'
+            '\n'
+            '    # Short Quiz\n'
+            '    1. Why are nested loops useful?\n'
+            '2. What happens to the inner loop when the outer loop changes?\n'
+            '3. What can the two loop variables represent?\n'
+            '\n'
+            '    # Answer and Explanation\n'
+            '    1. They handle two levels of repetition.\n'
+            '2. The inner loop starts its full sequence again.\n'
+            '3. Examples include row/column, number/multiplier, or two small groups of choices.\n'
+            '\n'
+            '    # Summary\n'
+            '    Nested loops are most useful when a task has two dimensions or repeated combinations.\n'
+            '\n'
+            '    # Practice/Review\n'
+            '    Trace one row of a multiplication table before coding the whole table.\n'
+            '\n'
+            '    # Optional Challenge\n'
+            '    Create a 1–5 multiplication table using nested loops.\n'
+        ),
+        "exercises": [
+            {
+                "instructions": 'Print the products for 1, 2, and 3 multiplied by 1, 2, and 3.',
+                "starter_code": 'for number in range(1, 4):\n    for multiplier in range(1, 4):\n        print(number * multiplier)\n',
+                "expected_output": '1\n2\n3\n2\n4\n6\n3\n6\n9',
+            },
+            {
+                "instructions": 'Print all coordinate pairs for a 3 by 3 grid.',
+                "starter_code": 'for row in range(3):\n    for column in range(3):\n        print(row, column)\n',
+                "expected_output": '0 0\n0 1\n0 2\n1 0\n1 1\n1 2\n2 0\n2 1\n2 2',
+            },
+        ],
     },
     {
-        "title": "Nested Loops in Practice",
-        "content": """
-## Lesson 18: Nested Loops in Practice
-
-**Learning objectives**
-- Use nested loops for small tables and combinations.
-- Trace a multiplication-table pattern.
-- Recognise when nested loops are useful.
-
-## Example: multiplication values
-
-```python
-for number in range(1, 4):
-    for multiplier in range(1, 4):
-        print(number * multiplier)
-```
-
-For `number = 1`, the inner loop produces `1`, `2`, `3`.
-Then `number` becomes `2`, and the inner loop starts over: `2`, `4`, `6`.
-Then `number = 3`: `3`, `6`, `9`.
-
-Output:
-
-```text
-1
-2
-3
-2
-4
-6
-3
-6
-9
-```
-
-The outer loop controls one repetition level. The inner loop runs fully for every outer value.
-
-## Worked example: coordinate labels
-
-```python
-for row in range(1, 3):
-    for column in range(1, 4):
-        print("row", row, "column", column)
-```
-
-This creates six coordinate pairs.
-
-## Try it yourself
-
-Change the ranges so the program creates a 2 by 5 grid.
-
-## Guided exercise
-
-Build a 3 by 3 multiplication table. Add text that makes each product easier to read.
-
-## Independent exercise
-
-Create every combination of one colour from:
-
-```python
-["red", "blue"]
-```
-
-and one size from:
-
-```python
-["small", "large"]
-```
-
-Use nested loops.
-
-## Debugging exercise
-
-Explain why this prints more values than a beginner might expect:
-
-```python
-for a in range(4):
-    for b in range(4):
-        print("X")
-```
-
-## Common mistakes
-
-- Forgetting that the inner loop restarts for every outer value.
-- Creating output that is technically correct but difficult to read.
-- Using a nested loop when one loop would do the job.
-
-## Short quiz
-
-**1. In a 4 by 3 nested loop, how many inner-body executions occur?**
-
-**Answer:** 12.
-
-**2. When does the inner loop restart?**
-
-**Answer:** Each time the outer loop moves to its next iteration.
-
-**3. Why are nested loops useful for tables?**
-
-**Answer:** One loop can represent rows or categories while the other handles the repeated values inside each row.
-
-## Summary
-
-Nested loops are useful for two-dimensional patterns and combinations. The key is to trace one outer iteration completely before moving to the next.
-
-## Review practice
-
-Write a one-sentence explanation of how a multiplication table maps naturally onto nested loops.
-
-## Optional challenge
-
-Use nested loops to print a small times table with row and column headings.
-""",
+        "title": 'Lesson 18 — Conditions Inside Loops',
+        "content": (
+            '    # Module: Loops + Decisions\n'
+            '    # Learning Objectives\n'
+            '    - Combine loops with if statements.\n'
+            '- Use a condition for each current value.\n'
+            '- Reuse Level 2 decision-making inside repetition.\n'
+            '\n'
+            '    # Why This Matters\n'
+            '    Real programs often repeat over many values while making a decision about each one. This is one of the most important combinations in Python.\n'
+            '\n'
+            '    # Explanation\n'
+            '    A loop decides **what values to visit**. An `if` decides **what to do with the current value**. The condition is evaluated once for each iteration when the `if` is inside the loop.\n'
+            '\n'
+            '    # Examples\n'
+            '    ```python\n'
+            'for number in range(1, 11):\n'
+            '    if number % 2 == 0:\n'
+            '        print(number)\n'
+            '```\n'
+            '\n'
+            'The loop visits 1 through 10; the condition selects the even values.\n'
+            '\n'
+            '    # Worked Example\n'
+            '    You can classify every value:\n'
+            '```python\n'
+            'for number in range(1, 4):\n'
+            '    if number % 2 == 0:\n'
+            '        print("Even")\n'
+            '    else:\n'
+            '        print("Odd")\n'
+            '```\n'
+            '\n'
+            '    # Beginner-Friendly Explanation\n'
+            '    For each number, Python enters the `if`, gets either `True` or `False`, and chooses a branch. Then the loop moves to the next number and the decision happens again.\n'
+            '\n'
+            '    # Try It Yourself\n'
+            '    Print only numbers greater than 5 from 1 through 10.\n'
+            '\n'
+            '    # Guided Exercise\n'
+            '    Put an if statement inside a for loop and test one comparison.\n'
+            '\n'
+            '    # Independent Exercise\n'
+            '    Classify numbers from 1 to 6 as even or odd.\n'
+            '\n'
+            '    # Hints\n'
+            '    Write the loop first, then decide what should happen for one current value.\n'
+            '\n'
+            '    # Common Mistakes\n'
+            '    - Putting the if outside the loop when the decision should happen for every value.\n'
+            '- Forgetting that the current value changes each iteration.\n'
+            '- Using a condition that refers to an unrelated variable.\n'
+            '\n'
+            '    # Short Quiz\n'
+            '    1. What does the loop provide?\n'
+            '2. What does the if decide?\n'
+            '3. How often is the condition checked?\n'
+            '\n'
+            '    # Answer and Explanation\n'
+            '    1. It provides one current value per iteration.\n'
+            '2. It decides what happens for that current value.\n'
+            '3. Once per iteration while the if is inside the loop.\n'
+            '\n'
+            '    # Summary\n'
+            '    Loops handle repetition; conditions handle decisions about each repeated value.\n'
+            '\n'
+            '    # Practice/Review\n'
+            '    Combine a Level 2 comparison with a Level 3 loop and explain the two responsibilities separately.\n'
+            '\n'
+            '    # Optional Challenge\n'
+            '    Use `if` and `elif` inside a loop to classify values into three categories.\n'
+        ),
+        "exercises": [
+            {
+                "instructions": 'Print the even numbers from 1 through 10.',
+                "starter_code": 'for number in range(1, 11):\n    if number % 2 == 0:\n        print(number)\n',
+                "expected_output": '2\n4\n6\n8\n10',
+            },
+            {
+                "instructions": 'Print Positive for each positive number.',
+                "starter_code": 'for number in [2, 5, 8]:\n    if number > 0:\n        print("Positive")\n',
+                "expected_output": 'Positive\nPositive\nPositive',
+            },
+        ],
     },
     {
-        "title": "Conditions Inside Loops",
-        "content": """
-## Lesson 19: Conditions Inside Loops
-
-**Learning objectives**
-- Combine `for` loops with `if` statements.
-- Use a loop to inspect many values.
-- Understand that the loop repeats and the condition decides what happens to each value.
-
-## Explanation
-
-A loop and an `if` statement solve different problems:
-
-- the loop says **"check each value"**
-- the `if` says **"do this only when the value matches the rule"**
-
-Example:
-
-```python
-for number in range(1, 11):
-    if number % 2 == 0:
-        print(number)
-```
-
-The loop visits numbers 1 through 10. The `if` keeps only the even numbers.
-
-Output:
-
-```text
-2
-4
-6
-8
-10
-```
-
-## Worked example: temperatures
-
-```python
-for temperature in [5, 12, 18, 7, 20]:
-    if temperature >= 15:
-        print("Warm:", temperature)
-```
-
-Only temperatures that meet the condition are printed.
-
-## Try it yourself
-
-Change the condition so the program prints temperatures below `10`.
-
-## Guided exercise
-
-Use a loop to print all numbers from `1` to `20` that are greater than `15`.
-
-Then change the condition so it prints numbers that are both greater than `5` and less than `12`.
-
-## Independent exercise
-
-Given five ages, print only ages that are at least `18`.
-
-## Prediction exercise
-
-```python
-for score in [45, 72, 88, 51]:
-    if score >= 60:
-        print(score)
-```
-
-Predict the exact output.
-
-## Common mistakes
-
-- Putting the condition outside the loop when it needs to be checked for every value.
-- Using `=` instead of `==` when comparing values.
-- Forgetting that the `if` block is indented inside the loop.
-
-## Short quiz
-
-**1. What does the loop do?**
-
-**Answer:** It visits each value.
-
-**2. What does the `if` do?**
-
-**Answer:** It decides what to do for the current value based on a condition.
-
-**3. Why is this pattern useful?**
-
-**Answer:** It lets a program process many values while applying a rule to each one.
-
-## Summary
-
-Loops can revisit a whole group of values, while `if` statements let you decide how to handle each current value. This combination is one of the most useful beginner patterns in Python.
-
-## Review practice
-
-Describe in plain English what this pattern means: `for each value → if it matches → do something`.
-
-## Optional challenge
-
-Print numbers from `1` to `50` that are divisible by both `3` and `5`.
-""",
+        "title": 'Lesson 19 — Counting Matching Values',
+        "content": (
+            '    # Module: Loops + Decisions\n'
+            '    # Learning Objectives\n'
+            '    - Combine a loop, condition, and counter.\n'
+            '- Count only matching values.\n'
+            '- Explain the role of each variable.\n'
+            '\n'
+            '    # Why This Matters\n'
+            '    Many useful programs ask how many items meet a rule. The loop finds the items, the condition decides whether an item matches, and the counter records how many matches have occurred.\n'
+            '\n'
+            '    # Explanation\n'
+            '    Create the counter before the loop. For each current value, check the rule. Increase the counter only when the rule is true.\n'
+            '\n'
+            '    # Examples\n'
+            '    ```python\n'
+            'count = 0\n'
+            'for number in range(1, 11):\n'
+            '    if number % 2 == 0:\n'
+            '        count += 1\n'
+            'print(count)\n'
+            '```\n'
+            '\n'
+            'The result is 5.\n'
+            '\n'
+            '    # Worked Example\n'
+            '    The `number` variable is the current value. The `if` is the matching rule. `count` is the number of matches found so far. Keeping these roles separate makes debugging easier.\n'
+            '\n'
+            '    # Beginner-Friendly Explanation\n'
+            '    For values 1 through 6, the counter changes only at 2, 4, and 6:\n'
+            '\n'
+            '```text\n'
+            '1 → count 0\n'
+            '2 → count 1\n'
+            '3 → count 1\n'
+            '4 → count 2\n'
+            '5 → count 2\n'
+            '6 → count 3\n'
+            '```\n'
+            '\n'
+            '    # Try It Yourself\n'
+            '    Count the values from 1 through 20 that are divisible by 5.\n'
+            '\n'
+            '    # Guided Exercise\n'
+            '    Initialize `count = 0`, then increase it when the divisibility condition is true.\n'
+            '\n'
+            '    # Independent Exercise\n'
+            '    Count how many values in `[4, 9, 12, 3, 15]` are greater than 10.\n'
+            '\n'
+            '    # Hints\n'
+            '    The counter should change only when the condition is satisfied.\n'
+            '\n'
+            '    # Common Mistakes\n'
+            '    - Incrementing on every iteration.\n'
+            '- Resetting count inside the loop.\n'
+            '- Testing the wrong property.\n'
+            '\n'
+            '    # Short Quiz\n'
+            '    1. What does `count` represent?\n'
+            '2. When does it increase?\n'
+            '3. Why is it initialized before the loop?\n'
+            '\n'
+            '    # Answer and Explanation\n'
+            '    1. The number of matches found so far.\n'
+            '2. Only when the condition is true.\n'
+            '3. So its previous value is preserved across all iterations.\n'
+            '\n'
+            '    # Summary\n'
+            '    A conditional counter counts matches instead of counting every loop iteration.\n'
+            '\n'
+            '    # Practice/Review\n'
+            '    Trace the counter for even values from 1 through 6.\n'
+            '\n'
+            '    # Optional Challenge\n'
+            '    Count numbers that are both positive and even.\n'
+        ),
+        "exercises": [
+            {
+                "instructions": 'Count the even numbers from 1 through 10.',
+                "starter_code": 'count = 0\nfor number in range(1, 11):\n    if number % 2 == 0:\n        count += 1\nprint(count)\n',
+                "expected_output": '5',
+            },
+            {
+                "instructions": 'Count the values greater than 10.',
+                "starter_code": 'numbers = [4, 9, 12, 3, 15]\ncount = 0\nfor number in numbers:\n    if number > 10:\n        count += 1\nprint(count)\n',
+                "expected_output": '2',
+            },
+        ],
     },
     {
-        "title": "Counting Matching Values",
-        "content": """
-## Lesson 20: Counting Matching Values
-
-**Learning objectives**
-- Combine a loop, condition, and counter.
-- Count how many values meet a rule.
-- Explain why the counter changes only when the rule matches.
-
-## Explanation
-
-A useful pattern is:
-
-```python
-count = 0
-
-for number in range(1, 11):
-    if number % 2 == 0:
-        count = count + 1
-
-print(count)
-```
-
-The loop checks every number. The `if` identifies even numbers. The counter increases only when a value is even.
-
-The final answer is `5`.
-
-Think of the three parts as three jobs:
-
-- `number` → current value being examined
-- `if` → rule for deciding whether it counts
-- `count` → remembers how many have matched so far
-
-## Worked example: passing scores
-
-```python
-passed = 0
-
-for score in [45, 72, 88, 51, 39]:
-    if score >= 50:
-        passed = passed + 1
-
-print("Passed:", passed)
-```
-
-Three scores are at least 50, so the final count is 3.
-
-## Try it yourself
-
-Count how many numbers from `1` to `20` are divisible by `3`.
-
-## Guided exercise
-
-Start with:
-
-```python
-adult_count = 0
-```
-
-Then process the ages `[12, 19, 25, 16, 30]` and count ages that are at least `18`.
-
-## Independent exercise
-
-Ask the user for five numbers. Count how many are positive.
-
-## Prediction exercise
-
-How many times does `count` increase?
-
-```python
-count = 0
-for n in [3, 8, 2, 9, 4]:
-    if n > 5:
-        count = count + 1
-```
-
-## Debugging exercise
-
-Find the bug:
-
-```python
-count = 0
-for number in range(1, 11):
-    if number % 2 == 0:
-        count = 1
-print(count)
-```
-
-The assignment resets the counter instead of increasing it.
-
-## Common mistakes
-
-- Writing `count = 1` instead of `count = count + 1`.
-- Increasing the counter for every value instead of only matches.
-- Using the wrong condition for what the program is supposed to count.
-
-## Short quiz
-
-**1. Why does the counter start at zero?**
-
-**Answer:** No values have matched yet.
-
-**2. When does the counter increase?**
-
-**Answer:** Only when the `if` condition is true.
-
-**3. What does the final value of the counter represent?**
-
-**Answer:** The number of values that met the condition.
-
-## Summary
-
-The loop + condition + counter pattern is a powerful way to answer questions like "How many values are above 50?" or "How many entries are negative?"
-
-## Review practice
-
-Create a plan to count how many numbers from `1` to `100` are divisible by `10`.
-
-## Optional challenge
-
-Count values that meet two rules, such as being greater than `20` **and** even.
-""",
+        "title": 'Lesson 20 — Filtering with a Loop',
+        "content": (
+            '    # Module: Loops + Decisions\n'
+            '    # Learning Objectives\n'
+            '    - Use a loop to select matching values.\n'
+            '- Apply conditions to realistic small data.\n'
+            '- Explain why non-matching values are still checked.\n'
+            '\n'
+            '    # Why This Matters\n'
+            '    Filtering is the process of selecting values that meet a rule. It appears in everyday programs such as selecting passing scores or finding temperatures above a threshold.\n'
+            '\n'
+            '    # Explanation\n'
+            '    A filter usually follows the pattern: loop through each value, test the current value, and do something only when the condition is true.\n'
+            '\n'
+            '    # Examples\n'
+            '    ```python\n'
+            'for score in [55, 82, 91, 64]:\n'
+            '    if score >= 70:\n'
+            '        print(score)\n'
+            '```\n'
+            '\n'
+            'Output: 82 and 91.\n'
+            '\n'
+            '    # Worked Example\n'
+            '    For temperatures:\n'
+            '```python\n'
+            'for temperature in [12, 18, 31, 27]:\n'
+            '    if temperature > 30:\n'
+            '        print(temperature)\n'
+            '```\n'
+            '\n'
+            'Only 31 passes the filter.\n'
+            '\n'
+            '    # Beginner-Friendly Explanation\n'
+            '    The loop still checks values that do not match. Filtering does not remove the need to inspect them; it decides which inspected values should produce an action.\n'
+            '\n'
+            '    # Try It Yourself\n'
+            '    Filter numbers greater than 10.\n'
+            '\n'
+            '    # Guided Exercise\n'
+            '    Put one comparison inside the loop and print only values that pass.\n'
+            '\n'
+            '    # Independent Exercise\n'
+            '    Filter a set of scores to show passing scores of 70 or more.\n'
+            '\n'
+            '    # Hints\n'
+            '    Translate the English rule into a comparison before writing the Python.\n'
+            '\n'
+            '    # Common Mistakes\n'
+            '    - Using the wrong boundary such as `>` instead of `>=`.\n'
+            '- Assuming a non-match stops the loop.\n'
+            '- Putting the condition outside the loop.\n'
+            '\n'
+            '    # Short Quiz\n'
+            '    1. What does filtering mean?\n'
+            '2. Are non-matching items still visited?\n'
+            '3. Where does the filter rule usually appear?\n'
+            '\n'
+            '    # Answer and Explanation\n'
+            '    1. Selecting values that meet a rule.\n'
+            '2. Yes, the loop still visits them.\n'
+            '3. Inside the loop, often in an if statement.\n'
+            '\n'
+            '    # Summary\n'
+            '    Filtering combines repeated processing with a decision about each current value.\n'
+            '\n'
+            '    # Practice/Review\n'
+            '    Create two different filters for the same fixed values and explain how the rule changes.\n'
+            '\n'
+            '    # Optional Challenge\n'
+            '    Filter values using two conditions connected with `and`, reusing your Level 2 logic skills.\n'
+        ),
+        "exercises": [
+            {
+                "instructions": 'Print scores of 70 or higher.',
+                "starter_code": 'for score in [55, 82, 91, 64]:\n    if score >= 70:\n        print(score)\n',
+                "expected_output": '82\n91',
+            },
+            {
+                "instructions": 'Print only positive numbers.',
+                "starter_code": 'for number in [-3, 0, 4, -1, 8]:\n    if number > 0:\n        print(number)\n',
+                "expected_output": '4\n8',
+            },
+        ],
     },
     {
-        "title": "Filtering with a Loop",
-        "content": """
-## Lesson 21: Filtering with a Loop
-
-**Learning objectives**
-- Understand filtering as selecting values that meet a rule.
-- Build practical filters with loops and `if` statements.
-- Reuse Level 2 conditions in a repeated context.
-
-## Explanation
-
-**Filtering** means looking through values and keeping only the ones that meet a condition.
-
-For example:
-
-```python
-scores = [45, 81, 66, 92]
-
-for score in scores:
-    if score >= 70:
-        print(score)
-```
-
-The loop visits every score, while the condition decides which ones are shown.
-
-You can filter many kinds of information:
-
-- scores above a threshold
-- temperatures below freezing
-- ages that meet a rule
-- positive numbers
-- names that match a simple condition
-
-Do not worry about more advanced tools such as comprehensions yet. The goal here is to understand the logic.
-
-## Worked example: positive numbers
-
-```python
-numbers = [5, -2, 9, -1, 4]
-
-for number in numbers:
-    if number > 0:
-        print(number)
-```
-
-Output:
-
-```text
-5
-9
-4
-```
-
-## Try it yourself
-
-Filter this set so only temperatures above `15` are printed:
-
-```python
-[12, 19, 8, 22, 17]
-```
-
-## Guided exercise
-
-Given:
-
-```python
-ages = [11, 18, 25, 14, 33]
-```
-
-Print only ages that are at least `18`.
-
-## Independent exercise
-
-Given a sequence of scores, print only scores below `50`.
-
-## Choose the rule
-
-Which condition matches each description?
-
-- positive number
-- number from 10 through 20
-- score below 40
-- age at least 18
-
-Write the condition in Python for each.
-
-## Common mistakes
-
-- Printing every value instead of only matching values.
-- Using the wrong comparison operator.
-- Trying to use advanced collection tools before the basic loop-and-condition pattern is clear.
-
-## Short quiz
-
-**1. What does filtering mean?**
-
-**Answer:** Selecting values that meet a rule.
-
-**2. Why does the loop still need to see every value?**
-
-**Answer:** It must inspect each value to know whether that value matches the rule.
-
-**3. Can filtering use `and` and `or` from Level 2?**
-
-**Answer:** Yes. Conditions inside loops can be combined just like conditions elsewhere.
-
-## Summary
-
-A loop lets you inspect many values, and a condition lets you select the values you care about. This pattern appears throughout real programming.
-
-## Review practice
-
-Take one filtering problem from your own life and describe the rule in plain English before writing Python.
-
-## Optional challenge
-
-Filter numbers from `1` to `50` that are either even or divisible by `5`.
-""",
+        "title": 'Lesson 21 — Number Counter',
+        "content": (
+            '    # Module: Practical Loop Problems\n'
+            '    # Learning Objectives\n'
+            '    - Build a simple counting program.\n'
+            '- Use range() to control a known count.\n'
+            '- Plan a loop before writing it.\n'
+            '\n'
+            '    # Why This Matters\n'
+            '    A small counting program is a useful way to practise the core pattern without adding new concepts.\n'
+            '\n'
+            '    # Explanation\n'
+            '    When the start and end values are known, `for` with `range()` is often straightforward. The loop variable itself represents the current number to print.\n'
+            '\n'
+            '    # Examples\n'
+            '    ```python\n'
+            'for number in range(1, 11):\n'
+            '    print(number)\n'
+            '```\n'
+            '\n'
+            'This prints 1 through 10.\n'
+            '\n'
+            '    # Worked Example\n'
+            '    A countdown can use a negative step:\n'
+            '```python\n'
+            'for number in range(10, 0, -1):\n'
+            '    print(number)\n'
+            '```\n'
+            '\n'
+            '    # Beginner-Friendly Explanation\n'
+            '    Plan the task first: first value, final value, direction, step, and output. If the final value should be included, remember that the stop argument must be one step beyond it when counting upward.\n'
+            '\n'
+            '    # Try It Yourself\n'
+            '    Count from 1 to 10.\n'
+            '\n'
+            '    # Guided Exercise\n'
+            '    Use `range(1, 11)` and print the loop variable.\n'
+            '\n'
+            '    # Independent Exercise\n'
+            '    Count from 20 down to 10.\n'
+            '\n'
+            '    # Hints\n'
+            '    Choose start, stop, and step on paper before typing.\n'
+            '\n'
+            '    # Common Mistakes\n'
+            '    - Off-by-one mistakes in range().\n'
+            '- Using a positive step for a descending task.\n'
+            '\n'
+            '    # Short Quiz\n'
+            '    1. Why is `range()` useful?\n'
+            '2. Why is the stop value one greater than 10 in `range(1, 11)`?\n'
+            '3. What controls direction in a countdown?\n'
+            '\n'
+            '    # Answer and Explanation\n'
+            '    1. It supplies a numeric sequence.\n'
+            '2. Because the stop is excluded.\n'
+            '3. The sign of the step.\n'
+            '\n'
+            '    # Summary\n'
+            '    Counting loops are simple but important practice for range(), loop variables, and planning.\n'
+            '\n'
+            '    # Practice/Review\n'
+            '    Write an ascending count and a descending count, then compare their range arguments.\n'
+            '\n'
+            '    # Optional Challenge\n'
+            '    Print every third number from 3 through 18.\n'
+        ),
+        "exercises": [
+            {
+                "instructions": 'Print 1 through 10.',
+                "starter_code": 'for number in range(1, 11):\n    print(number)\n',
+                "expected_output": '1\n2\n3\n4\n5\n6\n7\n8\n9\n10',
+            },
+            {
+                "instructions": 'Print 20 down to 10.',
+                "starter_code": 'for number in range(20, 9, -1):\n    print(number)\n',
+                "expected_output": '20\n19\n18\n17\n16\n15\n14\n13\n12\n11\n10',
+            },
+        ],
     },
     {
-        "title": "Number Counter",
-        "content": """
-## Lesson 22: Practical Problem — Number Counter
-
-**Learning objectives**
-- Translate a simple task into a loop plan.
-- Use counters with numeric ranges.
-- Practise writing the loop before worrying about shortcuts.
-
-## Problem
-
-Create a program that asks for a starting number and an ending number, then prints every whole number between them when the start is less than or equal to the end.
-
-For example, if the user enters `3` and `7`, the program should print:
-
-```text
-3
-4
-5
-6
-7
-```
-
-## Plan before code
-
-1. Get the starting number.
-2. Get the ending number.
-3. Set the current number to the start.
-4. Repeat while the current number has not passed the end.
-5. Print the current number.
-6. Move to the next number.
-
-This is a natural `while` loop problem because the stopping condition is directly tied to the current number.
-
-## Guided exercise
-
-Write the program in small pieces. Start with the two `input()` calls and type conversions. Then add the starting value. Then add the loop condition. Finally add the update.
-
-## Independent exercise
-
-Modify the program so that it counts backwards when the starting number is greater than the ending number.
-
-Hint: you will need to decide whether the current value should increase or decrease.
-
-## Debugging exercise
-
-A learner writes:
-
-```python
-current = start
-while current <= end:
-    print(current)
-    current = current - 1
-```
-
-If `start` is 3 and `end` is 7, explain why the loop cannot reach its stopping point.
-
-## Common mistakes
-
-- Forgetting to convert input to integers.
-- Using the wrong update direction.
-- Not considering what should happen when start and end are equal.
-
-## Short quiz
-
-**1. What variable represents the value currently being printed?**
-
-**Answer:** The current-number variable, such as `current`.
-
-**2. Why does the loop need an update?**
-
-**Answer:** So the current value changes and the condition can eventually become false.
-
-**3. Is `3` to `7` five numbers or four?**
-
-**Answer:** Five: 3, 4, 5, 6, 7.
-
-## Summary
-
-A practical loop problem starts with a plain-English plan. Identify the changing value, the stopping condition, and the update before writing the full program.
-
-## Review practice
-
-Describe a version of this program that prints only every second number.
-
-## Optional challenge
-
-Add a mode that counts upwards or downwards depending on the values the user enters.
-""",
+        "title": 'Lesson 22 — Running Total',
+        "content": (
+            '    # Module: Practical Loop Problems\n'
+            '    # Learning Objectives\n'
+            '    - Build a running total.\n'
+            '- Combine looping and accumulation.\n'
+            '- Keep the current value separate from the total.\n'
+            '\n'
+            '    # Why This Matters\n'
+            '    Running totals are common in shopping carts, scores, budgets, and reports. The loop processes each value while the accumulator remembers the sum so far.\n'
+            '\n'
+            '    # Explanation\n'
+            '    Initialize the total once before the loop. During each iteration, add the current value to it. Do not replace the total with the current value, because the purpose of the accumulator is to remember all previous additions.\n'
+            '\n'
+            '    # Examples\n'
+            '    ```python\n'
+            'total = 0\n'
+            'for price in [5, 8, 12]:\n'
+            '    total += price\n'
+            'print(total)\n'
+            '```\n'
+            '\n'
+            'The total is 25.\n'
+            '\n'
+            '    # Worked Example\n'
+            '    For 10, 5, and 8, the running total is 10 → 15 → 23. The current value changes every iteration; the total carries the history.\n'
+            '\n'
+            '    # Beginner-Friendly Explanation\n'
+            '    A common bug is:\n'
+            '```python\n'
+            'total = price\n'
+            '```\n'
+            'inside the loop. That throws away the old total. `total += price` keeps the old result and adds the new value.\n'
+            '\n'
+            '    # Try It Yourself\n'
+            '    Calculate the total of five fixed numbers.\n'
+            '\n'
+            '    # Guided Exercise\n'
+            '    Start `total = 0` and add one current value each iteration.\n'
+            '\n'
+            '    # Independent Exercise\n'
+            '    Calculate the total of `[12, 8, 25, 10]`.\n'
+            '\n'
+            '    # Hints\n'
+            '    Ask whether the line should preserve the old total. If yes, use an accumulating update.\n'
+            '\n'
+            '    # Common Mistakes\n'
+            '    - Resetting total each iteration.\n'
+            '- Replacing instead of adding.\n'
+            '- Starting with an inappropriate initial value.\n'
+            '\n'
+            '    # Short Quiz\n'
+            '    1. What does a running total store?\n'
+            '2. Why does it need to be outside the loop?\n'
+            '3. What does `total += value` mean?\n'
+            '\n'
+            '    # Answer and Explanation\n'
+            '    1. The sum of values processed so far.\n'
+            '2. So earlier values are not forgotten.\n'
+            '3. Add the current value to the existing total.\n'
+            '\n'
+            '    # Summary\n'
+            '    A running total is an accumulator that carries the result from one iteration to the next.\n'
+            '\n'
+            '    # Practice/Review\n'
+            '    Trace the total for `[3, 5, 7]` and write each intermediate result.\n'
+            '\n'
+            '    # Optional Challenge\n'
+            '    Combine a running total with a counter and calculate an average.\n'
+        ),
+        "exercises": [
+            {
+                "instructions": 'Calculate the total of the numbers.',
+                "starter_code": 'total = 0\nfor number in [3, 7, 10, 5]:\n    total += number\nprint(total)\n',
+                "expected_output": '25',
+            },
+            {
+                "instructions": 'Calculate the total price.',
+                "starter_code": 'prices = [4, 6, 15]\ntotal = 0\nfor price in prices:\n    total += price\nprint("Total:", total)\n',
+                "expected_output": 'Total: 25',
+            },
+        ],
     },
     {
-        "title": "Running Total",
-        "content": """
-## Lesson 23: Practical Problem — Running Total
-
-**Learning objectives**
-- Build a running total from repeated input.
-- Combine an accumulator with a counter-controlled loop.
-- Explain how each input changes the total.
-
-## Problem
-
-Ask the user for five numbers and calculate their total.
-
-A simple plan:
-
-1. Start `total` at `0`.
-2. Repeat five times.
-3. Read a number.
-4. Add it to `total`.
-5. Print the final total.
-
-## Worked structure
-
-```python
-total = 0
-count = 0
-
-while count < 5:
-    number = int(input("Enter a number: "))
-    total = total + number
-    count = count + 1
-
-print("Total:", total)
-```
-
-The two changing values have different jobs:
-
-- `count` answers "How many inputs have I processed?"
-- `total` answers "What is the combined value so far?"
-
-## Try it yourself
-
-Change the program to accept three numbers.
-
-## Guided exercise
-
-Run a manual trace using inputs `2`, `4`, `6`, `8`, and `10`.
-
-Write down `total` after each entry.
-
-## Independent exercise
-
-Build a five-item shopping total. The user enters each price and the program prints the combined amount.
-
-## Prediction exercise
-
-Predict the final output if the inputs are `10`, `-2`, `4`, `8`, `0`.
-
-## Debugging exercise
-
-What is wrong here?
-
-```python
-total = 0
-count = 0
-while count < 5:
-    number = int(input("Enter a number: "))
-    total = number
-    count = count + 1
-```
-
-The program remembers only the most recent number instead of the running total.
-
-## Common mistakes
-
-- Replacing the total instead of adding to it.
-- Controlling the loop with the total instead of a separate count.
-- Forgetting that `input()` returns text.
-
-## Short quiz
-
-**1. Which variable controls the five repetitions?**
-
-**Answer:** `count`.
-
-**2. Which variable accumulates the numbers?**
-
-**Answer:** `total`.
-
-**3. What does `total = total + number` mean in plain English?**
-
-**Answer:** Take the current total, add the new number, and store the new total.
-
-## Summary
-
-A running total is one of the most important loop patterns. The same idea appears in billing, statistics, scores, and many data-processing tasks.
-
-## Review practice
-
-Rewrite the program using a `for` loop and `range(5)` once you understand the `while` version.
-
-## Optional challenge
-
-Ask how many numbers the user wants to enter, then calculate the total for that many inputs.
-""",
+        "title": 'Lesson 23 — Average Calculator',
+        "content": (
+            '    # Module: Practical Loop Problems\n'
+            '    # Learning Objectives\n'
+            '    - Calculate an average using a loop.\n'
+            '- Understand why total and count are both needed.\n'
+            '- Avoid dividing by the wrong quantity.\n'
+            '\n'
+            '    # Why This Matters\n'
+            '    An average combines accumulation and counting. Learning to calculate it now prepares you for later data-processing tasks.\n'
+            '\n'
+            '    # Explanation\n'
+            '    The average is `total / count`. A loop can accumulate the total and increase a counter as it processes values. The division should happen after all values have been processed.\n'
+            '\n'
+            '    # Examples\n'
+            '    ```python\n'
+            'numbers = [10, 20, 30]\n'
+            'total = 0\n'
+            'count = 0\n'
+            'for number in numbers:\n'
+            '    total += number\n'
+            '    count += 1\n'
+            'print(total / count)\n'
+            '```\n'
+            '\n'
+            'Output: 20.0\n'
+            '\n'
+            '    # Worked Example\n'
+            '    For 10, 20, and 30, the total is 60 and the count is 3, so the average is 20.0.\n'
+            '\n'
+            '    # Beginner-Friendly Explanation\n'
+            '    The two variables have different jobs:\n'
+            '- `total` stores the sum.\n'
+            '- `count` stores how many values were included.\n'
+            '\n'
+            'Using `total / count` keeps the calculation connected to the actual number of values processed.\n'
+            '\n'
+            '    # Try It Yourself\n'
+            '    Calculate the average of 4, 6, and 8.\n'
+            '\n'
+            '    # Guided Exercise\n'
+            '    Build a total and count in the same loop, then divide after the loop.\n'
+            '\n'
+            '    # Independent Exercise\n'
+            '    Calculate the average of `[70, 80, 90, 100]`.\n'
+            '\n'
+            '    # Hints\n'
+            '    First calculate total, then count, then divide total by count.\n'
+            '\n'
+            '    # Common Mistakes\n'
+            '    - Dividing by the wrong number.\n'
+            '- Calculating before all values are processed.\n'
+            '- Confusing the current value with the running total.\n'
+            '\n'
+            '    # Short Quiz\n'
+            '    1. What is the average formula?\n'
+            '2. Why do we need count?\n'
+            '3. When should the average normally be calculated?\n'
+            '\n'
+            '    # Answer and Explanation\n'
+            '    1. `average = total / count`.\n'
+            '2. It tells us how many values are included.\n'
+            '3. After the loop has processed the values.\n'
+            '\n'
+            '    # Summary\n'
+            '    An average is a total divided by the number of values included in the total.\n'
+            '\n'
+            '    # Practice/Review\n'
+            '    Trace total and count for three values and calculate the average by hand.\n'
+            '\n'
+            '    # Optional Challenge\n'
+            '    Build an average calculator for five values, using the same accumulator and counter pattern.\n'
+        ),
+        "exercises": [
+            {
+                "instructions": 'Calculate the average of 10, 20, and 30.',
+                "starter_code": 'numbers = [10, 20, 30]\ntotal = 0\ncount = 0\nfor number in numbers:\n    total += number\n    count += 1\nprint(total / count)\n',
+                "expected_output": '20.0',
+            },
+            {
+                "instructions": 'Calculate the average of four scores.',
+                "starter_code": 'scores = [70, 80, 90, 100]\ntotal = 0\ncount = 0\nfor score in scores:\n    total += score\n    count += 1\nprint(total / count)\n',
+                "expected_output": '85.0',
+            },
+        ],
     },
     {
-        "title": "Average Calculator",
-        "content": """
-## Lesson 24: Practical Problem — Average Calculator
-
-**Learning objectives**
-- Understand the relationship between total, count, and average.
-- Build an average calculator using a loop.
-- Avoid dividing by zero.
-
-## Explanation
-
-An average is calculated as:
-
-```text
-average = total / count
-```
-
-That means a program needs two pieces of information:
-
-- the combined total
-- the number of values
-
-Example plan:
-
-```python
-total = 0
-count = 0
-
-while count < 4:
-    score = float(input("Enter a score: "))
-    total = total + score
-    count = count + 1
-
-average = total / count
-print("Average:", average)
-```
-
-Notice that `count` is not the same thing as `total`.
-
-## Worked example
-
-Scores: `60`, `70`, `80`, `90`
-
-Total: `300`
-
-Count: `4`
-
-Average: `300 / 4 = 75`
-
-## Try it yourself
-
-Change the calculator to collect five scores.
-
-## Guided exercise
-
-Build the program one part at a time. Before writing the division, make sure you can explain what `total` and `count` mean.
-
-## Independent exercise
-
-Create an average calculator for four daily temperatures.
-
-## Debugging exercise
-
-Why is this potentially unsafe?
-
-```python
-count = 0
-total = 0
-average = total / count
-```
-
-**Answer:** The program is trying to divide by zero.
-
-## Prediction exercise
-
-What average should be produced for values `10`, `20`, and `30`?
-
-## Common mistakes
-
-- Dividing by the wrong number.
-- Forgetting to increment `count`.
-- Starting `count` at `1` instead of zero when it represents processed values.
-- Using integer conversion when decimal input should be allowed.
-
-## Short quiz
-
-**1. What formula gives the average?**
-
-**Answer:** `total / count`.
-
-**2. Why do we count the values?**
-
-**Answer:** The count is the divisor in the average calculation.
-
-**3. Why can zero count be a problem?**
-
-**Answer:** Division by zero is invalid.
-
-## Summary
-
-Many small data problems are built from the same loop pieces: process a value, update a total, update a count, then use the accumulated information.
-
-## Review practice
-
-Describe how a running total and a count work together to produce an average.
-
-## Optional challenge
-
-Let the user choose how many scores to enter, then calculate the average for that number of scores.
-""",
+        "title": 'Lesson 24 — Multiplication Tables',
+        "content": (
+            '    # Module: Practical Loop Problems\n'
+            '    # Learning Objectives\n'
+            '    - Use a loop for repeated arithmetic.\n'
+            '- Use range() for a multiplication table.\n'
+            '- Keep a fixed value separate from a changing multiplier.\n'
+            '\n'
+            '    # Why This Matters\n'
+            '    Multiplication tables provide a compact way to practise loops, range(), variables, and arithmetic together.\n'
+            '\n'
+            '    # Explanation\n'
+            '    Choose the table number that stays fixed. Let the loop variable represent the multiplier. Each iteration calculates a new product.\n'
+            '\n'
+            '    # Examples\n'
+            '    ```python\n'
+            'for multiplier in range(1, 6):\n'
+            '    print(5 * multiplier)\n'
+            '```\n'
+            '\n'
+            'This prints the first five results in the 5 times table.\n'
+            '\n'
+            '    # Worked Example\n'
+            '    A clearer version labels the equation:\n'
+            '```python\n'
+            'for multiplier in range(1, 6):\n'
+            '    print(5, "x", multiplier, "=", 5 * multiplier)\n'
+            '```\n'
+            '\n'
+            '    # Beginner-Friendly Explanation\n'
+            '    The number 5 remains fixed. `multiplier` changes from 1 to 5. The loop handles the changing part; arithmetic combines the two values.\n'
+            '\n'
+            '    # Try It Yourself\n'
+            '    Print the first five values of the 3 times table.\n'
+            '\n'
+            '    # Guided Exercise\n'
+            '    Use `range(1, 6)` and multiply the current multiplier by 3.\n'
+            '\n'
+            '    # Independent Exercise\n'
+            '    Generate the 7 times table from 1 to 10.\n'
+            '\n'
+            '    # Hints\n'
+            '    Decide which number stays fixed and which number changes.\n'
+            '\n'
+            '    # Common Mistakes\n'
+            '    - Using the wrong range.\n'
+            '- Changing the fixed table number by accident.\n'
+            '- Printing the multiplier instead of the product.\n'
+            '\n'
+            '    # Short Quiz\n'
+            '    1. Which variable changes?\n'
+            '2. What stays fixed?\n'
+            '3. Why is range useful?\n'
+            '\n'
+            '    # Answer and Explanation\n'
+            '    1. The multiplier.\n'
+            '2. The selected table number.\n'
+            '3. It supplies the multiplier values automatically.\n'
+            '\n'
+            '    # Summary\n'
+            '    A multiplication table is a controlled repetition of a simple arithmetic rule.\n'
+            '\n'
+            '    # Practice/Review\n'
+            '    Write the 4 times table by hand, then compare your values with a loop output.\n'
+            '\n'
+            '    # Optional Challenge\n'
+            '    Use nested loops to print a small 1–5 multiplication table after reviewing nested loops.\n'
+        ),
+        "exercises": [
+            {
+                "instructions": 'Print the 3 times table from 1 through 5.',
+                "starter_code": 'for multiplier in range(1, 6):\n    print(3 * multiplier)\n',
+                "expected_output": '3\n6\n9\n12\n15',
+            },
+            {
+                "instructions": 'Print the 7 times table from 1 through 10.',
+                "starter_code": 'for multiplier in range(1, 11):\n    print(7 * multiplier)\n',
+                "expected_output": '7\n14\n21\n28\n35\n42\n49\n56\n63\n70',
+            },
+        ],
     },
     {
-        "title": "Multiplication Tables",
-        "content": """
-## Lesson 25: Practical Problem — Multiplication Tables
-
-**Learning objectives**
-- Use `for` and `range()` together.
-- Use the loop variable in a calculation.
-- Practise predictable, repeated output.
-
-## Explanation
-
-A multiplication table is a natural `for` loop exercise because the number of repetitions is known.
-
-```python
-for multiplier in range(1, 11):
-    print(7, "x", multiplier, "=", 7 * multiplier)
-```
-
-This prints the seven times table from 1 through 10.
-
-## Worked example
-
-The loop variable `multiplier` changes like this:
-
-`1 → 2 → 3 → ... → 10`
-
-Each iteration calculates a new product.
-
-## Try it yourself
-
-Change the program to print the six times table.
-
-## Guided exercise
-
-Ask the user for a number and convert it to an integer. Then use a `for` loop to print its table from 1 to 10.
-
-## Independent exercise
-
-Create a small table for a number from 1 to 12 instead of 1 to 10.
-
-## Prediction exercise
-
-What is the last line printed by:
-
-```python
-for multiplier in range(1, 5):
-    print(3 * multiplier)
-```
-
-## Common mistakes
-
-- Using `range(1, 10)` when you want to include 10.
-- Printing the multiplier instead of calculating the product.
-- Forgetting that the loop variable is the current value from `range()`.
-
-## Short quiz
-
-**1. How many iterations does `range(1, 11)` create?**
-
-**Answer:** 10.
-
-**2. Which variable changes each iteration in the example?**
-
-**Answer:** `multiplier`.
-
-**3. Why is `for` a good fit here?**
-
-**Answer:** The table has a known set of multipliers to process.
-
-## Summary
-
-Known counting patterns are an excellent use of `for` and `range()`. The loop variable can directly participate in calculations.
-
-## Review practice
-
-Create a table for `9` and explain why the range stops at `11` rather than `10`.
-
-## Optional challenge
-
-Use nested loops to print the multiplication tables for `2`, `3`, and `4`.
-""",
+        "title": 'Lesson 25 — Input Validation Loop',
+        "content": (
+            '    # Module: Practical Loop Problems\n'
+            '    # Learning Objectives\n'
+            '    - Use a while loop for validation.\n'
+            '- Reuse Level 2 comparisons and logical operators.\n'
+            '- Explain why invalid input triggers another iteration.\n'
+            '\n'
+            '    # Why This Matters\n'
+            '    You already know how to decide whether a value is valid. A while loop lets the program keep asking until the user satisfies that rule.\n'
+            '\n'
+            '    # Explanation\n'
+            '    A validation loop keeps repeating while the input is invalid. For a required range from 1 to 10, the invalid condition is `number < 1 or number > 10`.\n'
+            '\n'
+            '    # Examples\n'
+            '    ```python\n'
+            'number = int(input("Enter 1-10: "))\n'
+            'while number < 1 or number > 10:\n'
+            '    print("Invalid")\n'
+            '    number = int(input("Try again: "))\n'
+            'print("Accepted:", number)\n'
+            '```\n'
+            '\n'
+            '    # Worked Example\n'
+            '    The loop condition describes the bad state that requires another attempt. When the number finally enters the valid range, the condition becomes false and the program continues.\n'
+            '\n'
+            '    # Beginner-Friendly Explanation\n'
+            '    This is a direct combination of Level 2 and Level 3:\n'
+            '- Level 2 supplies the validation rule.\n'
+            '- Level 3 supplies repetition until the rule is satisfied.\n'
+            '\n'
+            '    # Try It Yourself\n'
+            '    Create a validation loop for numbers from 1 to 5.\n'
+            '\n'
+            '    # Guided Exercise\n'
+            '    Use `number < 1 or number > 5` as the invalid condition.\n'
+            '\n'
+            '    # Independent Exercise\n'
+            '    Design a validation loop for a menu choice of 1, 2, or 3.\n'
+            '\n'
+            '    # Hints\n'
+            '    Describe the invalid condition first; it is usually easier than writing the whole loop immediately.\n'
+            '\n'
+            '    # Common Mistakes\n'
+            '    - Using `and` instead of `or` for an outside-range condition.\n'
+            '- Forgetting to request new input inside the loop.\n'
+            '- Writing the valid condition when the loop needs the invalid condition.\n'
+            '\n'
+            '    # Short Quiz\n'
+            '    1. What should the loop condition represent?\n'
+            '2. Why is `or` used for outside-range validation?\n'
+            '3. What happens when the input becomes valid?\n'
+            '\n'
+            '    # Answer and Explanation\n'
+            '    1. The invalid state that requires another attempt.\n'
+            '2. A value can be too small or too large.\n'
+            '3. The condition becomes false and the loop ends.\n'
+            '\n'
+            '    # Summary\n'
+            '    Validation loops repeat a familiar decision until the value becomes acceptable.\n'
+            '\n'
+            '    # Practice/Review\n'
+            '    Translate three Level 2 validation rules into while-loop conditions.\n'
+            '\n'
+            '    # Optional Challenge\n'
+            '    Create a validation loop that accepts only even numbers between 2 and 20.\n'
+        ),
+        "exercises": [
+            {
+                "instructions": 'Keep asking until the number is between 1 and 5. Test with 8, 0, then 4.',
+                "starter_code": 'number = int(input())\nwhile number < 1 or number > 5:\n    number = int(input())\nprint("Accepted:", number)\n',
+                "expected_output": 'Accepted: 4',
+            },
+            {
+                "instructions": 'Keep asking until the user enters a positive number. Test with -2, 0, then 7.',
+                "starter_code": 'number = int(input())\nwhile number <= 0:\n    number = int(input())\nprint("Accepted:", number)\n',
+                "expected_output": 'Accepted: 7',
+            },
+        ],
     },
     {
-        "title": "Input Validation Loop",
-        "content": """
-## Lesson 26: Practical Problem — Input Validation Loop
-
-**Learning objectives**
-- Reuse Level 2 validation inside a loop.
-- Keep asking until the input meets a requirement.
-- Explain why `while` is useful when the number of attempts is unknown.
-
-## Explanation
-
-A validation loop is useful when the program must reject invalid input and ask again.
-
-Suppose a user must enter a number from 1 to 10.
-
-```python
-number = int(input("Enter a number from 1 to 10: "))
-
-while number < 1 or number > 10:
-    print("That number is outside the allowed range.")
-    number = int(input("Try again: "))
-
-print("Accepted:", number)
-```
-
-The condition says:
-
-- too small **or** too large → invalid
-- otherwise → valid
-
-This uses `or`, which you learned in Level 2.
-
-## Execution idea
-
-If the user enters `20`:
-
-- `20 < 1` is false.
-- `20 > 10` is true.
-- false `or` true becomes true.
-- the loop runs and asks again.
-
-If the user enters `7`, both invalid checks are false, so the loop stops.
-
-## Try it yourself
-
-Change the valid range to `1` through `100`.
-
-## Guided exercise
-
-Write a loop that repeatedly asks for an age until the user enters a number from `0` through `120`.
-
-## Independent exercise
-
-Create a program that asks the user to choose a menu number from `1`, `2`, or `3`. Keep asking until the user enters one of those choices.
-
-## Debugging exercise
-
-Find the logic error:
-
-```python
-while number < 1 and number > 10:
-    number = int(input("Try again: "))
-```
-
-A number cannot usually be below 1 and above 10 at the same time. The intended rule needs `or`.
-
-## Common mistakes
-
-- Using `and` when the invalid cases are alternatives.
-- Forgetting to ask for new input inside the loop.
-- Validating only after accepting the value instead of before continuing.
-
-## Short quiz
-
-**1. Why is `while` useful here?**
-
-**Answer:** The number of attempts is unknown; the loop continues until the condition becomes false.
-
-**2. Why does the invalid condition use `or`?**
-
-**Answer:** A number is invalid when it is too small or too large.
-
-**3. What should happen to the input variable inside the loop?**
-
-**Answer:** It should be updated with a new attempt.
-
-## Summary
-
-Validation loops are one of the first genuinely useful programs you can build. They combine decisions, booleans, input, type conversion, and repetition.
-
-## Review practice
-
-Write an English sentence for the rule: "Keep asking while the user's input is invalid."
-
-## Optional challenge
-
-Add a second validation rule: the number must be even as well as being between 1 and 10.
-""",
+        "title": 'Lesson 26 — Simple Menu Loop',
+        "content": (
+            '    # Module: Practical Loop Problems\n'
+            '    # Learning Objectives\n'
+            '    - Build a repeating text menu.\n'
+            '- Combine input with if/elif/else.\n'
+            '- Use break as a clear exit option.\n'
+            '\n'
+            '    # Why This Matters\n'
+            '    Many programs repeatedly show choices to the user. A menu loop provides a clear place to choose an action and then return to the menu.\n'
+            '\n'
+            '    # Explanation\n'
+            '    A simple menu can use `while True` and `break`. The loop repeats the menu, `input()` reads the choice, and `if`/`elif` decides which action to take. The exit choice triggers `break`.\n'
+            '\n'
+            '    # Examples\n'
+            '    ```python\n'
+            'while True:\n'
+            '    print("1. Say hello")\n'
+            '    print("2. Show status")\n'
+            '    print("3. Exit")\n'
+            '\n'
+            '    choice = input("Choose: " )\n'
+            '\n'
+            '    if choice == "1":\n'
+            '        print("Hello")\n'
+            '    elif choice == "2":\n'
+            '        print("Ready")\n'
+            '    elif choice == "3":\n'
+            '        break\n'
+            '    else:\n'
+            '        print("Invalid choice")\n'
+            '```\n'
+            '\n'
+            '    # Worked Example\n'
+            '    The menu has one job per part: display choices, read the choice, handle each valid branch, handle invalid input, and exit when requested.\n'
+            '\n'
+            '    # Beginner-Friendly Explanation\n'
+            '    `while True` does not tell Python when to stop. That is why `break` matters here. The program stops only when the user selects the deliberate exit branch.\n'
+            '\n'
+            '    # Try It Yourself\n'
+            '    Create a two-option menu with an exit choice.\n'
+            '\n'
+            '    # Guided Exercise\n'
+            '    Start with `while True`, then write one branch for each menu option and one branch for exit.\n'
+            '\n'
+            '    # Independent Exercise\n'
+            '    Add a simple third action such as printing the current number from 1 to 3.\n'
+            '\n'
+            '    # Hints\n'
+            '    Keep menu choices as strings because `input()` returns text.\n'
+            '\n'
+            '    # Common Mistakes\n'
+            '    - Forgetting the exit branch.\n'
+            '- Comparing an input string to an integer without conversion.\n'
+            '- Putting break in the wrong branch.\n'
+            '\n'
+            '    # Short Quiz\n'
+            '    1. Why is `while True` useful here?\n'
+            '2. What actually ends the menu loop?\n'
+            '3. Why are choices compared as strings?\n'
+            '\n'
+            '    # Answer and Explanation\n'
+            '    1. It keeps the menu repeating until a deliberate exit.\n'
+            '2. `break`.\n'
+            '3. Because `input()` returns text.\n'
+            '\n'
+            '    # Summary\n'
+            '    A menu loop combines repetition, decisions, input, and an explicit exit.\n'
+            '\n'
+            '    # Practice/Review\n'
+            '    Trace one menu cycle and identify which branch runs for each possible choice.\n'
+            '\n'
+            '    # Optional Challenge\n'
+            '    Add a fourth menu option that prints a short multiplication table.\n'
+        ),
+        "exercises": [
+            {
+                "instructions": 'Run the menu with choices 1, 2, and 3 in order; 3 exits.',
+                "starter_code": 'while True:\n    choice = input()\n    if choice == "1":\n        print("Hello")\n    elif choice == "2":\n        print("Ready")\n    elif choice == "3":\n        break\n',
+                "expected_output": 'Hello\nReady',
+            },
+            {
+                "instructions": 'Build a menu that prints Start for 1, Help for 2, and exits for 3.',
+                "starter_code": 'while True:\n    choice = input()\n    # Write the menu logic here\n',
+                "expected_output": 'Start\nHelp',
+            },
+        ],
     },
     {
-        "title": "Simple Menu Loop",
-        "content": """
-## Lesson 27: Practical Problem — Simple Menu Loop
-
-**Learning objectives**
-- Build a small menu that repeats.
-- Combine `while`, input, and `if`/`elif`/`else`.
-- Use `break` for a clear exit option.
-
-## Explanation
-
-Many command-line programs display a menu repeatedly until the user chooses to exit.
-
-Example structure:
-
-```python
-while True:
-    print("1. Say hello")
-    print("2. Say goodbye")
-    print("3. Exit")
-
-    choice = input("Choose an option: ")
-
-    if choice == "1":
-        print("Hello!")
-    elif choice == "2":
-        print("Goodbye!")
-    elif choice == "3":
-        print("Exiting...")
-        break
-    else:
-        print("Unknown option.")
-```
-
-This uses concepts from Level 2 and this level together:
-
-- `while True` keeps the menu available.
-- `if` / `elif` chooses the response.
-- `break` exits when the user chooses `3`.
-
-## Try it yourself
-
-Replace the menu actions with three simple study actions, such as viewing a tip, practising a number, or leaving the menu.
-
-## Guided exercise
-
-Build a two-option menu plus exit. Keep the actions simple so the loop logic is the main focus.
-
-## Independent exercise
-
-Create a menu for a small unit converter with options for two conversions and an exit option. The actual conversion can use arithmetic you already know.
-
-## Debugging exercise
-
-A program prints the exit message but keeps showing the menu. What is probably missing?
-
-**Answer:** The `break` statement, or another mechanism that changes the loop condition, is missing.
-
-## Prediction exercise
-
-What happens when the user enters `4` in the example above?
-
-## Common mistakes
-
-- Forgetting the `break` on the exit choice.
-- Putting `break` on the wrong branch.
-- Making the menu action much more complicated than the loop lesson requires.
-
-## Short quiz
-
-**1. Why does the menu use `while True`?**
-
-**Answer:** It keeps showing the menu until an explicit `break` exits the loop.
-
-**2. What handles the different menu choices?**
-
-**Answer:** `if` / `elif` / `else`.
-
-**3. What should happen for an invalid choice?**
-
-**Answer:** The program should provide feedback and continue rather than silently failing.
-
-## Summary
-
-A repeating menu is a practical way to combine the ideas you have learned so far. It is also a useful foundation for small command-line applications.
-
-## Review practice
-
-List the three jobs in this program: repeat, decide, exit.
-
-## Optional challenge
-
-Add a counter that records how many menu actions the user completes before exiting.
-""",
+        "title": 'Lesson 27 — Debugging Loop Output',
+        "content": (
+            '    # Module: Practical Loop Problems\n'
+            '    # Learning Objectives\n'
+            '    - Use expected output to locate loop bugs.\n'
+            '- Distinguish loop bugs from arithmetic bugs.\n'
+            '- Make the smallest necessary correction.\n'
+            '\n'
+            '    # Why This Matters\n'
+            '    Debugging becomes easier when you predict what code should do and compare that with what it actually does. Loop bugs often come from the start, stop, step, or update.\n'
+            '\n'
+            '    # Explanation\n'
+            '    A practical debugging cycle is: state the expected output, inspect the loop control, predict the first few iterations, identify the smallest mismatch, and change only what is necessary.\n'
+            '\n'
+            '    # Examples\n'
+            '    ```python\n'
+            'for number in range(1, 6):\n'
+            '    print(number + 1)\n'
+            '```\n'
+            '\n'
+            'If the requirement is to print 1 through 5, the loop range is fine; the problem is the `+ 1`.\n'
+            '\n'
+            '    # Worked Example\n'
+            '    Another example:\n'
+            '```python\n'
+            'count = 1\n'
+            'while count <= 5:\n'
+            '    print(count)\n'
+            '    count += 2\n'
+            '```\n'
+            '\n'
+            'This loop intentionally prints 1, 3, 5. If the requirement is every number, the update is the problem.\n'
+            '\n'
+            '    # Beginner-Friendly Explanation\n'
+            '    Do not change three lines at once. First ask whether the error is in the start, stop, step, condition, or loop-body calculation. A focused correction is easier to verify.\n'
+            '\n'
+            '    # Try It Yourself\n'
+            '    Predict the output of a loop before looking for its bug.\n'
+            '\n'
+            '    # Guided Exercise\n'
+            '    Identify whether the bug is in start, stop, step, update, or body output.\n'
+            '\n'
+            '    # Independent Exercise\n'
+            '    Fix a loop that prints the wrong sequence without changing unrelated lines.\n'
+            '\n'
+            '    # Hints\n'
+            '    Compare expected and actual output one line at a time.\n'
+            '\n'
+            '    # Common Mistakes\n'
+            '    - Changing many things at once.\n'
+            '- Assuming every bad output means the loop itself is wrong.\n'
+            '- Skipping prediction and guessing fixes.\n'
+            '\n'
+            '    # Short Quiz\n'
+            '    1. What should you compare when debugging?\n'
+            '2. Why make the smallest change?\n'
+            '3. Which loop parts often cause sequence errors?\n'
+            '\n'
+            '    # Answer and Explanation\n'
+            '    1. Expected versus actual behavior.\n'
+            '2. It isolates the cause and makes the fix easier to verify.\n'
+            '3. Start, stop, step, condition, update, and loop-body calculation.\n'
+            '\n'
+            '    # Summary\n'
+            '    Good debugging is controlled reasoning: predict, compare, isolate, change, and test.\n'
+            '\n'
+            '    # Practice/Review\n'
+            '    Take one working loop and deliberately change one control value. Predict how the output changes.\n'
+            '\n'
+            '    # Optional Challenge\n'
+            '    Write a debugging explanation for a loop that should print even numbers but prints odd numbers.\n'
+        ),
+        "exercises": [
+            {
+                "instructions": 'Fix the arithmetic so the loop prints 1 through 5.',
+                "starter_code": 'for number in range(1, 6):\n    print(number + 1)\n',
+                "expected_output": '1\n2\n3\n4\n5',
+            },
+            {
+                "instructions": 'Fix the update so every number from 1 through 5 is printed.',
+                "starter_code": 'count = 1\nwhile count <= 5:\n    print(count)\n    count += 2\n',
+                "expected_output": '1\n2\n3\n4\n5',
+            },
+        ],
     },
     {
-        "title": "Loop Review",
-        "content": """
-## Lesson 28: Level 3 Review
-
-**Learning objectives**
-- Review all major loop concepts.
-- Mix Level 1, Level 2, and Level 3 skills.
-- Diagnose common loop mistakes.
-
-## Core ideas to review
-
-### Why loops exist
-Loops reduce repeated code and let a program process many values or continue until a condition changes.
-
-### `while`
-A `while` loop repeats while its condition is true.
-
-### `for`
-A `for` loop visits values from a sequence one at a time.
-
-### `range()`
-`range()` creates counting values. The stop value is excluded.
-
-### Counters
-A counter tracks how many events or matching values have occurred.
-
-### Accumulators
-An accumulator collects a running value such as a total.
-
-### `break`
-Leaves a loop immediately.
-
-### `continue`
-Skips the rest of the current iteration and moves to the next one.
-
-### Nested loops
-A loop inside another loop creates another level of repetition.
-
-### Loops + decisions
-A loop can inspect many values while an `if` statement decides what to do with each one.
-
-## Mixed prediction practice
-
-**1.**
-
-```python
-for n in range(2, 7):
-    print(n)
-```
-
-**2.**
-
-```python
-count = 0
-for n in range(1, 6):
-    if n % 2 == 1:
-        count = count + 1
-print(count)
-```
-
-**3.**
-
-```python
-n = 10
-while n > 4:
-    print(n)
-    n = n - 2
-```
-
-Predict all output before running the code.
-
-## Debugging practice
-
-Find the problem in each example.
-
-### A
-```python
-count = 0
-while count < 3:
-    print(count)
-```
-
-### B
-```python
-total = 0
-for n in range(1, 4):
-    total = n
-print(total)
-```
-
-### C
-```python
-for n in range(1, 6):
-    if n == 3:
-        break
-    print(n)
-```
-
-If the goal is to print `1, 2, 4, 5`, what should change?
-
-## Choose the approach
-
-Choose `for` or `while` and explain why:
-
-1. Print 100 numbered labels.
-2. Keep asking for a command until the user types `exit`.
-3. Visit each value in a known sequence.
-4. Validate a number until it is within an allowed range.
-
-## Integrated coding review
-
-Write a program that asks for five numbers and reports:
-
-- the total
-- how many numbers were positive
-- how many were even
-
-You already know every concept required.
-
-## Short quiz
-
-**1. What is the main purpose of a loop?**
-
-**Answer:** Repetition.
-
-**2. Which loop is often convenient for a known sequence?**
-
-**Answer:** `for`.
-
-**3. Which keyword exits a loop immediately?**
-
-**Answer:** `break`.
-
-**4. Which keyword skips one iteration?**
-
-**Answer:** `continue`.
-
-**5. What is the difference between a counter and an accumulator?**
-
-**Answer:** A counter usually tracks how many events occurred; an accumulator collects a changing total or combined value.
-
-## Summary
-
-You can now use loops to automate repetition, count values, build totals, validate input, filter information, and create small interactive programs.
-
-## Review practice
-
-Without looking at the lessons, explain each term in one sentence: loop, iteration, counter, accumulator, loop variable, nested loop.
-
-## Optional challenge
-
-Solve one problem twice—once with `while` and once with `for`—then compare the readability of both solutions.
-""",
+        "title": 'Lesson 28 — Mixed Loop Challenge',
+        "content": (
+            '    # Module: Level 3 Review and Project Preparation\n'
+            '    # Learning Objectives\n'
+            '    - Combine loops with conditions, counters, and accumulators.\n'
+            '- Choose a suitable loop.\n'
+            '- Plan a solution before coding.\n'
+            '\n'
+            '    # Why This Matters\n'
+            '    Real problems rarely tell you which loop keyword to use. You need to identify what repeats, what controls the repetition, and what information must be remembered between iterations.\n'
+            '\n'
+            '    # Explanation\n'
+            '    A useful planning sequence is: what repeats, what controls the loop, what is the current value, what must be counted, what must be accumulated, and what should happen when a value matches a rule.\n'
+            '\n'
+            '    # Examples\n'
+            '    ```python\n'
+            'total = 0\n'
+            'count = 0\n'
+            'for number in range(1, 11):\n'
+            '    if number % 2 == 0:\n'
+            '        total += number\n'
+            '        count += 1\n'
+            'print(total)\n'
+            'print(count)\n'
+            '```\n'
+            '\n'
+            '    # Worked Example\n'
+            '    This single example combines a range, loop, condition, accumulator, counter, and output. None of the pieces are new; the challenge is deciding where they belong together.\n'
+            '\n'
+            '    # Beginner-Friendly Explanation\n'
+            '    Before coding, label each variable:\n'
+            '- `number`: current value\n'
+            '- `total`: accumulated sum\n'
+            '- `count`: number of matching values\n'
+            '\n'
+            'Clear roles make mixed problems easier.\n'
+            '\n'
+            '    # Try It Yourself\n'
+            '    Choose a loop and variables for a short problem statement.\n'
+            '\n'
+            '    # Guided Exercise\n'
+            '    Plan a program that counts and totals only even numbers from 1 to 20.\n'
+            '\n'
+            '    # Independent Exercise\n'
+            '    Solve a problem that filters values while maintaining both a count and total.\n'
+            '\n'
+            '    # Hints\n'
+            '    Write the plan in plain English before the code.\n'
+            '\n'
+            '    # Common Mistakes\n'
+            '    - Coding before deciding what each variable means.\n'
+            '- Using break or continue unnecessarily.\n'
+            '- Resetting totals or counters inside the loop.\n'
+            '\n'
+            '    # Short Quiz\n'
+            '    1. What should you decide before coding?\n'
+            '2. Can one loop contain both an if and a counter?\n'
+            '3. Can a loop use both a counter and accumulator?\n'
+            '\n'
+            '    # Answer and Explanation\n'
+            '    1. Decide what repeats, what controls it, and what must be remembered.\n'
+            '2. Yes.\n'
+            '3. Yes; this is common in practical problems.\n'
+            '\n'
+            '    # Summary\n'
+            '    Mixed problems are solved by assigning each concept one clear responsibility and then combining them.\n'
+            '\n'
+            '    # Practice/Review\n'
+            '    Trace the even-number total-and-count example by hand.\n'
+            '\n'
+            '    # Optional Challenge\n'
+            '    Solve a new problem from only a plain-English description without looking at a finished code example.\n'
+        ),
+        "exercises": [
+            {
+                "instructions": 'Add the even numbers from 1 through 10.',
+                "starter_code": 'total = 0\nfor number in range(1, 11):\n    if number % 2 == 0:\n        total += number\nprint(total)\n',
+                "expected_output": '30',
+            },
+            {
+                "instructions": 'Count numbers greater than 5 from 1 through 10.',
+                "starter_code": 'count = 0\nfor number in range(1, 11):\n    if number > 5:\n        count += 1\nprint(count)\n',
+                "expected_output": '5',
+            },
+        ],
     },
     {
-        "title": "Mixed Loop Challenge",
-        "content": """
-## Lesson 29: Mixed Loop Challenge
-
-**Learning objectives**
-- Plan a solution before coding.
-- Combine loops, conditions, counters, accumulators, and input.
-- Debug a multi-step loop problem independently.
-
-## Challenge
-
-Build a small program that asks the user for six numbers and reports:
-
-- the total
-- the number of positive values
-- the number of negative values
-- the number of even values
-- the number of values greater than 50
-
-Do not copy a full solution. Build it from smaller pieces.
-
-## Suggested plan
-
-1. Decide how the program will repeat six times.
-2. Create a `total` accumulator.
-3. Create counters for each condition you need to count.
-4. Read and convert one number.
-5. Add it to the total.
-6. Use `if` statements to update the appropriate counters.
-7. After the loop, print the summary.
-
-## Guided checkpoint 1
-
-Before writing code, list the variables you need and explain the job of each one.
-
-## Guided checkpoint 2
-
-Write only the repetition and input first. Test that exactly six values are read.
-
-## Guided checkpoint 3
-
-Add the running total and test it with small numbers.
-
-## Guided checkpoint 4
-
-Add one condition and one counter.
-
-## Independent challenge
-
-Finish the rest without copying a complete example.
-
-## Debugging checklist
-
-If your program gives the wrong result, check:
-
-- Does the loop run exactly six times?
-- Is each input converted to a number?
-- Does `total` accumulate instead of reset?
-- Do condition counters increase only when their conditions are true?
-- Are the summary values printed after the loop?
-
-## Short quiz
-
-**1. Which variable should change on every input?**
-
-**Answer:** The repetition counter and the current input value.
-
-**2. Which values should persist across iterations?**
-
-**Answer:** The total and the condition counters.
-
-**3. Why print the final summary after the loop?**
-
-**Answer:** The complete results are not known until all six inputs have been processed.
-
-## Summary
-
-A larger loop problem becomes manageable when you break it into small responsibilities: repetition, current input, accumulated results, conditions, and final output.
-
-## Optional challenge
-
-Let the user choose how many numbers to analyse, but keep the same analysis rules. Make sure your loop still has a clear stopping point.
-""",
+        "title": 'Lesson 29 — Level 3 Review',
+        "content": (
+            '    # Module: Level 3 Review and Project Preparation\n'
+            '    # Learning Objectives\n'
+            '    - Recall the core loop concepts.\n'
+            '- Predict and debug loop behavior.\n'
+            '- Prepare for the final project.\n'
+            '\n'
+            '    # Why This Matters\n'
+            '    Review is where individual techniques become connected. You should now be able to read a loop, predict its behavior, write a small loop, and explain the purpose of each variable.\n'
+            '\n'
+            '    # Explanation\n'
+            '    The Level 3 toolbox includes `while`, `for`, `range()`, counters, accumulators, `break`, `continue`, nested loops, and conditions inside loops. Each tool solves a different part of repetition.\n'
+            '\n'
+            '    # Examples\n'
+            '    Quick reference:\n'
+            '```python\n'
+            'for number in range(1, 6):\n'
+            '    print(number)\n'
+            '```\n'
+            '\n'
+            '```python\n'
+            'total = 0\n'
+            'for number in range(1, 6):\n'
+            '    total += number\n'
+            '```\n'
+            '\n'
+            '```python\n'
+            'count = 0\n'
+            'for number in range(1, 11):\n'
+            '    if number % 2 == 0:\n'
+            '        count += 1\n'
+            '```\n'
+            '\n'
+            '    # Worked Example\n'
+            '    A reliable learning routine is:\n'
+            '**Understand → Predict → Run → Compare → Fix → Review**\n'
+            '\n'
+            'The goal is not to memorise every pattern. The goal is to understand what each line contributes.\n'
+            '\n'
+            '    # Beginner-Friendly Explanation\n'
+            '    When a loop is confusing, reduce it to questions:\n'
+            '- What value changes?\n'
+            '- What condition is checked?\n'
+            '- What repeats?\n'
+            '- What state is remembered?\n'
+            '- What event stops or skips the work?\n'
+            '\n'
+            '    # Try It Yourself\n'
+            '    Explain each Level 3 concept in one sentence.\n'
+            '\n'
+            '    # Guided Exercise\n'
+            '    Predict one output question and one debugging question without running them first.\n'
+            '\n'
+            '    # Independent Exercise\n'
+            '    Fix a mixed loop and explain why your correction works.\n'
+            '\n'
+            '    # Hints\n'
+            '    Use your own words before reading the answer.\n'
+            '\n'
+            '    # Common Mistakes\n'
+            '    - Confusing counter with accumulator.\n'
+            '- Confusing break with continue.\n'
+            '- Forgetting the stop value is excluded in range().\n'
+            '\n'
+            '    # Short Quiz\n'
+            '    1. What does `range(5)` supply?\n'
+            '2. What does an accumulator do?\n'
+            '3. What does break do?\n'
+            '4. What does continue do?\n'
+            '5. What is a nested loop?\n'
+            '\n'
+            '    # Answer and Explanation\n'
+            '    1. 0 through 4.\n'
+            '2. It builds a running result.\n'
+            '3. It exits the loop.\n'
+            '4. It skips the current iteration and continues.\n'
+            '5. A loop inside another loop.\n'
+            '\n'
+            '    # Summary\n'
+            '    You now have the core Level 3 loop patterns needed for practical beginner programs.\n'
+            '\n'
+            '    # Practice/Review\n'
+            '    Create a personal checklist of loop questions to ask whenever code behaves unexpectedly.\n'
+            '\n'
+            '    # Optional Challenge\n'
+            '    Attempt the final project from a blank editor after planning the variables and loop structure on paper.\n'
+        ),
+        "exercises": [
+            {
+                "instructions": 'Count even numbers from 1 through 20.',
+                "starter_code": 'count = 0\nfor number in range(1, 21):\n    if number % 2 == 0:\n        count += 1\nprint(count)\n',
+                "expected_output": '10',
+            },
+            {
+                "instructions": 'Calculate the total from 1 through 10.',
+                "starter_code": 'total = 0\nfor number in range(1, 11):\n    total += number\nprint(total)\n',
+                "expected_output": '55',
+            },
+        ],
     },
     {
-        "title": "Level 3 Project — Number Analysis Tool",
-        "content": """
-# Level 3 Project — Number Analysis Tool
-
-**Project goal**
-
-Build a beginner-friendly program that analyses a series of numbers using the loop concepts from Level 3.
-
-The final program should:
-
-- accept multiple values
-- keep a running total
-- count how many values were entered
-- identify positive and negative values
-- count values meeting a condition
-- calculate an average
-- display a final summary
-
-Do not use concepts that belong to later levels. The project is intentionally built from variables, input, conversion, loops, conditions, counters, accumulators, and arithmetic.
-
-## Requirements
-
-Your program must:
-
-1. Ask the user how many numbers they want to enter.
-2. Repeatedly ask for each number.
-3. Keep a running total.
-4. Keep track of how many numbers have been processed.
-5. Count positive values.
-6. Count negative values.
-7. Count even values.
-8. Calculate an average when at least one number has been entered.
-9. Print a readable summary.
-
-## Milestone 1 — Accept repeated input
-
-Create a loop that asks for the requested number of values.
-
-**Success check:** If the user chooses `5`, the program asks for exactly five numbers.
-
-**Hint:** You already know how to use a counter-controlled loop.
-
-## Milestone 2 — Maintain a count
-
-Track how many values have been processed.
-
-**Success check:** The final count should match the number entered by the user.
-
-## Milestone 3 — Add a running total
-
-Start a total at zero and add each new number to it.
-
-**Success check:** For inputs `2`, `4`, and `6`, the total should be `12`.
-
-## Milestone 4 — Add conditions
-
-For each number, use `if` statements to identify:
-
-- positive numbers
-- negative numbers
-- even numbers
-
-**Success check:** A test set should produce the correct count for each category.
-
-## Milestone 5 — Calculate an average
-
-Use:
-
-```text
-average = total / count
-```
-
-Make sure you do not divide by zero.
-
-## Milestone 6 — Display the final summary
-
-Create a clear output section such as:
-
-```text
-Numbers entered: 5
-Total: 42
-Positive: 3
-Negative: 2
-Even: 4
-Average: 8.4
-```
-
-The exact formatting is up to you.
-
-## Milestone 7 — Improve the interaction
-
-Add beginner-friendly messages so the user always knows what the program expects.
-
-For example:
-
-```text
-How many numbers would you like to analyse?
-Enter number 1:
-```
-
-Do not add features that require functions, files, classes, or libraries. Those belong to later levels.
-
-## Common mistakes
-
-- Resetting `total` inside the loop.
-- Forgetting to increase the processed-count variable.
-- Counting zero as positive or negative without deciding what your rule should be.
-- Dividing by zero when no values were entered.
-- Mixing up the target count with the number of matching values.
-
-## Validation criteria
-
-Your project is ready for review when:
-
-- the requested number of inputs is processed exactly once each
-- the total is correct
-- the average is correct
-- positive/negative/even counts are correct
-- the output is readable
-- invalid control values are handled sensibly if you choose to add validation
-- the program does not rely on future-level concepts
-
-## Test cases
-
-Use these test cases before considering the project finished.
-
-### Test 1
-Input:
-
-```text
-3
-2
-4
-6
-```
-
-Expected:
-
-- count = 3
-- total = 12
-- positive = 3
-- negative = 0
-- even = 3
-- average = 4
-
-### Test 2
-Input:
-
-```text
-4
--5
-0
-5
-10
-```
-
-Decide how your program should classify zero and document that choice.
-
-### Test 3
-Use a mix of positive, negative, odd, and even values.
-
-## Extension challenges
-
-Only attempt these after the core project works:
-
-1. Add a count of values greater than 50.
-2. Add a smallest-value tracker using techniques you already know.
-3. Add a simple validation loop for the number of inputs.
-4. Let the user run another analysis after finishing one report.
-
-## Reflection
-
-After completing the project, answer:
-
-- Which variable was easiest to understand?
-- Which loop was easiest to write?
-- Where did you make your first bug?
-- How did tracing help you debug it?
-- Which Level 2 idea did you reuse most often?
-
-## Project summary
-
-This project is your opportunity to combine the entire Level 3 toolkit. The most important skill is not memorising loop syntax. It is learning to break a larger problem into small, understandable steps and then let repetition handle the repeated work.
-""",
+        "title": 'Lesson 30 — Number Analysis Tool',
+        "content": (
+            '    # Module: Level 3 Review and Project Preparation\n'
+            '    # Learning Objectives\n'
+            '    - Apply Level 3 skills in one practical program.\n'
+            '- Break a larger problem into milestones.\n'
+            '- Test a loop-based program systematically.\n'
+            '\n'
+            '    # Why This Matters\n'
+            '    The final Level 3 project brings earlier skills together without requiring later topics such as functions, files, or classes. The aim is to build confidence with planning and repetition.\n'
+            '\n'
+            '    # Explanation\n'
+            '    Build a Number Analysis Tool that processes a series of numbers and reports useful results. The project must accept multiple values, count entries, accumulate a total, calculate an average, count positive values, count negative values, and count values that satisfy one chosen condition such as being greater than 10.\n'
+            '\n'
+            '    # Examples\n'
+            '    ## Project Requirements\n'
+            '1. Accept several numbers.\n'
+            '2. Count how many numbers were accepted.\n'
+            '3. Maintain a running total.\n'
+            '4. Calculate an average.\n'
+            '5. Count positive numbers.\n'
+            '6. Count negative numbers.\n'
+            '7. Count values matching one extra condition.\n'
+            '8. Print a readable final summary.\n'
+            '\n'
+            '    # Worked Example\n'
+            '    ## Milestones\n'
+            '**1 — Input loop:** collect a fixed number of numbers.\n'
+            '\n'
+            '**2 — Counter:** track how many entries were processed.\n'
+            '\n'
+            '**3 — Total:** add each number to an accumulator.\n'
+            '\n'
+            '**4 — Decisions:** use `if` to count positive and negative values.\n'
+            '\n'
+            '**5 — Average:** divide total by count after the loop.\n'
+            '\n'
+            '**6 — Extra condition:** count values above a threshold.\n'
+            '\n'
+            '**7 — Final summary:** label every result clearly.\n'
+            '\n'
+            '    # Beginner-Friendly Explanation\n'
+            '    Do not write the complete program at once. Build one milestone, run it, check the result, and only then add the next part. For example, if Milestone 2 is wrong, there is no benefit in adding the average calculation until the count works.\n'
+            '\n'
+            '    # Try It Yourself\n'
+            '    Write down the variables you expect to need before coding.\n'
+            '\n'
+            '    # Guided Exercise\n'
+            '    Complete Milestones 1–3 first. Test them with 4, -2, and 7.\n'
+            '\n'
+            '    # Independent Exercise\n'
+            '    Finish the full analysis and test it with positive, negative, and zero values.\n'
+            '\n'
+            '    # Hints\n'
+            '    Assign one job to each variable: current number, count, total, and any condition-specific counters.\n'
+            '\n'
+            '    # Common Mistakes\n'
+            '    - Resetting totals or counters inside the loop.\n'
+            '- Dividing by zero when no values have been collected.\n'
+            '- Using a threshold that does not match the stated requirement.\n'
+            '- Trying to add every feature before testing the core loop.\n'
+            '\n'
+            '    # Short Quiz\n'
+            '    1. Why build the project in milestones?\n'
+            '2. Which variable stores the running total?\n'
+            '3. What tracks the number of values?\n'
+            '4. When should average be calculated?\n'
+            '5. Why test each milestone?\n'
+            '\n'
+            '    # Answer and Explanation\n'
+            '    1. Milestones break a large problem into smaller testable pieces.\n'
+            '2. An accumulator such as `total`.\n'
+            '3. A counter such as `count`.\n'
+            '4. After the values have been processed.\n'
+            '5. Testing early makes it easier to locate the source of a bug.\n'
+            '\n'
+            '    # Summary\n'
+            '    The Number Analysis Tool should demonstrate that you can combine loops, decisions, counters, accumulators, and earlier input skills without needing an AI to write the solution for you.\n'
+            '\n'
+            '    # Practice/Review\n'
+            '    ### Validation Checklist\n'
+            'Test at least three values, include zero, include both positive and negative numbers, and test a case where the chosen threshold matches nothing. Check total, count, average, and all conditional counts.\n'
+            '\n'
+            '    # Optional Challenge\n'
+            '    ### Optional Challenge\n'
+            "Add a count of even numbers, a second threshold, or a repeated 'run another analysis' menu. Stay within Level 3 concepts.\n"
+        ),
+        "exercises": [
+            {
+                "instructions": 'Complete the first project milestone: read three numbers and print the count. Test with 4, -2, and 7.',
+                "starter_code": 'count = 0\nwhile count < 3:\n    number = int(input())\n    count += 1\nprint("Count:", count)\n',
+                "expected_output": 'Count: 3',
+            },
+            {
+                "instructions": 'Complete the core analysis for three fixed values: count, total, and average.',
+                "starter_code": 'numbers = [4, -2, 7]\ncount = 0\ntotal = 0\nfor number in numbers:\n    total += number\n    count += 1\naverage = total / count\nprint("Count:", count)\nprint("Total:", total)\nprint("Average:", average)\n',
+                "expected_output": 'Count: 3\nTotal: 9\nAverage: 3.0',
+            },
+        ],
     },
 ]
-
-
-def add_or_update_lesson(
-    lessons: List[Dict[str, str]],
-    title: str,
-    content: str,
-) -> Dict[str, str]:
-    """Create a lesson if it does not exist, otherwise update its content."""
-    for lesson in lessons:
-        if lesson["title"] == title:
-            lesson["content"] = content
-            return lesson
-
-    new_lesson = {"title": title, "content": content}
-    lessons.append(new_lesson)
-    return new_lesson
-
-
-def populate_level3(lessons: List[Dict[str, str]]) -> None:
-    """Create or update all Level 3 lessons without creating duplicates."""
-    for lesson_data in LEVEL3_LESSONS:
-        add_or_update_lesson(
-            lessons,
-            lesson_data["title"],
-            lesson_data["content"],
-        )
-
-
-if __name__ == "__main__":
-    existing_lessons: List[Dict[str, str]] = []
-    populate_level3(existing_lessons)
-    print(f"Loaded {len(existing_lessons)} Level 3 lessons.")
-    for lesson in existing_lessons:
-        print(f"Title: {lesson['title']}")
-        print(f"Content length: {len(lesson['content'])} characters")
-        print()
